@@ -1,0 +1,17 @@
+title: Anatomical example of SubClassTriad
+description: limb with two subtypes, fore and hind limb
+ontology:
+  id: UBERON:x
+  source: uberon
+  classes:
+    - id: UBERON:0002101
+      label: limb
+    - id: UBERON:0002102
+      label: forelimb
+    - id: UBERON:0002103
+      label: hindlimb
+patterns:
+  - type: SubClassTriad
+    parent: UBERON:0002101
+    child1: UBERON:0002102
+    child2: UBERON:0002103

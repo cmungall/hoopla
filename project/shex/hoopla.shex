@@ -1,0 +1,489 @@
+BASE <https://w3id.org/hoopla/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX rdfs1: <http://example.org/UNKNOWN/rdfs/>
+PREFIX dcterms: <http://example.org/UNKNOWN/dcterms/>
+PREFIX owl1: <http://example.org/UNKNOWN/owl/>
+
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<AllValuesFromCardinalityAntiPattern> CLOSED {
+    (  $<AllValuesFromCardinalityAntiPattern_tes> (  &<SubGraph_tes> ;
+          rdf:type [ <SubGraph> ] ?
+       ) ;
+       rdf:type [ <AllValuesFromCardinalityAntiPattern> ] ?
+    )
+}
+
+<AllValuesFromTransitiveAntiPattern> CLOSED {
+    (  $<AllValuesFromTransitiveAntiPattern_tes> (  &<SubGraph_tes> ;
+          rdf:type [ <SubGraph> ] ?
+       ) ;
+       rdf:type [ <AllValuesFromTransitiveAntiPattern> ] ?
+    )
+}
+
+<AntiPattern> {
+    (  $<AntiPattern_tes> rdf:type . * ;
+       rdf:type [ <AntiPattern> ] ?
+    )
+}
+
+<Class> CLOSED {
+    (  $<Class_tes> (  &<Entity_tes> ;
+          rdf:type [ <Entity> ] ? ;
+          <members> @<Entity> * ;
+          <size> @linkml:Integer ?
+       ) ;
+       rdf:type [ owl1:Class ]
+    )
+}
+
+<ComplementSubClassTriad> CLOSED {
+    (  $<ComplementSubClassTriad_tes> (  &<SubClassTriad_tes> ;
+          rdf:type [ <SubClassTriad> ] ? ;
+          &<SometimesAntiPattern_tes> ;
+          rdf:type [ <SometimesAntiPattern> ] ? ;
+          <variant_of> @<JEPDSubClassTriad> *
+       ) ;
+       rdf:type [ <ComplementSubClassTriad> ] ?
+    )
+}
+
+<ContextualRange>  (
+    @<ContextualRangeUsingDisjointnessAxiom> OR @<ContextualRangeUsingUniversalAxiom>
+)
+
+<ContextualRange_struct> {
+    (  $<ContextualRange_tes> (  &<SubGraph_tes> ;
+          rdf:type [ <SubGraph> ] ? ;
+          <domain_class> @linkml:String ? ;
+          <relationship_type> @linkml:String ? ;
+          <range_class> @linkml:String ?
+       ) ;
+       rdf:type [ <ContextualRange> ] ?
+    )
+}
+
+<ContextualRangeUsingDisjointnessAxiom> CLOSED {
+    (  $<ContextualRangeUsingDisjointnessAxiom_tes> (  &<ContextualRange_tes> ;
+          rdf:type [ <ContextualRange> ] ?
+       ) ;
+       rdf:type [ <ContextualRangeUsingDisjointnessAxiom> ] ?
+    )
+}
+
+<ContextualRangeUsingUniversalAxiom> CLOSED {
+    (  $<ContextualRangeUsingUniversalAxiom_tes> (  &<ContextualRange_tes> ;
+          rdf:type [ <ContextualRange> ] ?
+       ) ;
+       rdf:type [ <ContextualRangeUsingUniversalAxiom> ] ?
+    )
+}
+
+<ContextualRefinementQuad>  (
+    CLOSED {
+       (  $<ContextualRefinementQuad_tes> (  &<Quad_tes> ;
+             rdf:type [ <Quad> ] ?
+          ) ;
+          rdf:type [ <ContextualRefinementQuad> ] ?
+       )
+    } OR @<InstanceContextualRefinementQuad>
+)
+
+<CrossProduct>  (
+    @<DenselyPopulatedCrossProduct> OR @<SparselyPopulatedCrossProduct>
+)
+
+<CrossProduct_struct> {
+    (  $<CrossProduct_tes> (  &<SubGraph_tes> ;
+          rdf:type [ <SubGraph> ] ? ;
+          <axes_of_classification> @linkml:String *
+       ) ;
+       rdf:type [ <CrossProduct> ] ?
+    )
+}
+
+<Delta>  (
+    CLOSED {
+       (  $<Delta_tes> (  &<Pattern_tes> ;
+             rdf:type [ <Pattern> ] ? ;
+             <source_subgraph> @<SubGraph> ? ;
+             <target_subgraph> @<SubGraph> ?
+          ) ;
+          rdf:type [ <Delta> ] ?
+       )
+    } OR @<Refactor>
+)
+
+<DenselyPopulatedCrossProduct> CLOSED {
+    (  $<DenselyPopulatedCrossProduct_tes> (  &<CrossProduct_tes> ;
+          rdf:type [ <CrossProduct> ] ?
+       ) ;
+       rdf:type [ <DenselyPopulatedCrossProduct> ] ?
+    )
+}
+
+<DisjointSubClassTriad> CLOSED {
+    (  $<DisjointSubClassTriad_tes> (  &<SubClassTriad_tes> ;
+          rdf:type [ <SubClassTriad> ] ?
+       ) ;
+       rdf:type [ <DisjointSubClassTriad> ] ?
+    )
+}
+
+<ELShunt> CLOSED {
+    (  $<ELShunt_tes> (  &<Refactor_tes> ;
+          rdf:type [ <Refactor> ] ?
+       ) ;
+       rdf:type [ <ELShunt> ] ?
+    )
+}
+
+<Entity>  (
+    @<Class> OR @<Ontology>
+)
+
+<Entity_struct> {
+    (  $<Entity_tes> rdfs1:label @linkml:String ? ;
+       rdf:type [ <Entity> ]
+    )
+}
+
+<EvolvedFromTriad> CLOSED {
+    (  $<EvolvedFromTriad_tes> (  &<GroupingTriad_tes> ;
+          rdf:type [ <GroupingTriad> ] ?
+       ) ;
+       rdf:type [ <EvolvedFromTriad> ] ?
+    )
+}
+
+<Grouping> {
+    (  $<Grouping_tes> rdf:type . * ;
+       rdf:type [ <Grouping> ] ?
+    )
+}
+
+<GroupingPair> {
+    (  $<GroupingPair_tes> (  &<Pair_tes> ;
+          rdf:type [ <Pair> ] ? ;
+          &<Grouping_tes> ;
+          rdf:type [ <Grouping> ] ? ;
+          <parent> @linkml:String ? ;
+          <child> @linkml:String ? ;
+          <child_to_parent_relationship_type> @linkml:String ? ;
+          <additional_axioms> @linkml:String ?
+       ) ;
+       rdf:type [ <GroupingPair> ] ?
+    )
+}
+
+<GroupingTriad>  (
+    @<EvolvedFromTriad> OR @<PartWholeTriad> OR @<PrototypeSubClassTriadAntipattern> OR @<PrototypeTriad> OR @<SubClassTriad>
+)
+
+<GroupingTriad_struct> {
+    (  $<GroupingTriad_tes> (  &<Triad_tes> ;
+          rdf:type [ <Triad> ] ? ;
+          &<Grouping_tes> ;
+          rdf:type [ <Grouping> ] ? ;
+          <parent> @linkml:String ? ;
+          <child1> @linkml:String ? ;
+          <child2> @linkml:String ? ;
+          <child1_to_parent_relationship_type> @linkml:String ? ;
+          <child2_to_parent_relationship_type> @linkml:String ? ;
+          <additional_axioms> @linkml:String ?
+       ) ;
+       rdf:type [ <GroupingTriad> ] ?
+    )
+}
+
+<ImbalancedSubClassTriad> CLOSED {
+    (  $<ImbalancedSubClassTriad_tes> (  &<SubClassTriad_tes> ;
+          rdf:type [ <SubClassTriad> ] ? ;
+          &<SometimesAntiPattern_tes> ;
+          rdf:type [ <SometimesAntiPattern> ] ?
+       ) ;
+       rdf:type [ <ImbalancedSubClassTriad> ] ?
+    )
+}
+
+<ImplicitJEPDSubClassTriad> CLOSED {
+    (  $<ImplicitJEPDSubClassTriad_tes> (  &<SubClassTriad_tes> ;
+          rdf:type [ <SubClassTriad> ] ? ;
+          &<AntiPattern_tes> ;
+          rdf:type [ <AntiPattern> ] ? ;
+          <should_be_replaced_by> @<JEPDSubClassTriad> ?
+       ) ;
+       rdf:type [ <ImplicitJEPDSubClassTriad> ] ?
+    )
+}
+
+<InstanceContextualRefinementQuad> CLOSED {
+    (  $<InstanceContextualRefinementQuad_tes> (  &<ContextualRefinementQuad_tes> ;
+          rdf:type [ <ContextualRefinementQuad> ] ?
+       ) ;
+       rdf:type [ <InstanceContextualRefinementQuad> ] ?
+    )
+}
+
+<JEPDSubClassTriad> CLOSED {
+    (  $<JEPDSubClassTriad_tes> (  &<SubClassTriad_tes> ;
+          rdf:type [ <SubClassTriad> ] ?
+       ) ;
+       rdf:type [ <JEPDSubClassTriad> ] ?
+    )
+}
+
+<MeasurementPattern> CLOSED {
+    (  $<MeasurementPattern_tes> (  &<SubGraph_tes> ;
+          rdf:type [ <SubGraph> ] ?
+       ) ;
+       rdf:type [ <MeasurementPattern> ] ?
+    )
+}
+
+<MixedAxisSubClassTriad> CLOSED {
+    (  $<MixedAxisSubClassTriad_tes> (  &<SubClassTriad_tes> ;
+          rdf:type [ <SubClassTriad> ] ? ;
+          &<SometimesAntiPattern_tes> ;
+          rdf:type [ <SometimesAntiPattern> ] ?
+       ) ;
+       rdf:type [ <MixedAxisSubClassTriad> ] ?
+    )
+}
+
+<NAryRelationship> CLOSED {
+    (  $<NAryRelationship_tes> (  &<SubGraph_tes> ;
+          rdf:type [ <SubGraph> ] ?
+       ) ;
+       rdf:type [ <NAryRelationship> ] ?
+    )
+}
+
+<Ontology> CLOSED {
+    (  $<Ontology_tes> (  &<Entity_tes> ;
+          rdf:type [ <Entity> ] ? ;
+          <classes> @<Class> * ;
+          <source> @linkml:String ?
+       ) ;
+       rdf:type [ <Ontology> ]
+    )
+}
+
+<Pair>  (
+    {
+       (  $<Pair_tes> (  &<SubGraph_tes> ;
+             rdf:type [ <SubGraph> ] ?
+          ) ;
+          rdf:type [ <Pair> ] ?
+       )
+    } OR @<GroupingPair>
+)
+
+<PartWholeTriad> CLOSED {
+    (  $<PartWholeTriad_tes> (  &<GroupingTriad_tes> ;
+          rdf:type [ <GroupingTriad> ] ? ;
+          <child1_to_parent_relationship_type> @linkml:String ? ;
+          <child2_to_parent_relationship_type> @linkml:String ?
+       ) ;
+       rdf:type [ <PartWholeTriad> ] ?
+    )
+}
+
+<Pattern>  (
+    @<Delta> OR @<SubGraph>
+)
+
+<Pattern_struct> {
+    (  $<Pattern_tes> <type> @linkml:String ? ;
+       rdf:type [ <Pattern> ] ?
+    )
+}
+
+<PatternInstantiationCollection> CLOSED {
+    (  $<PatternInstantiationCollection_tes> (  <title> @linkml:String ? ;
+          <description> @linkml:String ? ;
+          <ontology> @<Ontology> ? ;
+          <patterns> @<Pattern> *
+       ) ;
+       rdf:type [ <PatternInstantiationCollection> ] ?
+    )
+}
+
+<PrototypeSubClassTriadAntipattern> CLOSED {
+    (  $<PrototypeSubClassTriadAntipattern_tes> (  &<GroupingTriad_tes> ;
+          rdf:type [ <GroupingTriad> ] ? ;
+          <child1_to_parent_relationship_type> @linkml:String ? ;
+          <child2_to_parent_relationship_type> @linkml:String ? ;
+          <should_be_replaced_by> @<PrototypeTriad> ?
+       ) ;
+       rdf:type [ <PrototypeSubClassTriadAntipattern> ] ?
+    )
+}
+
+<PrototypeTriad> CLOSED {
+    (  $<PrototypeTriad_tes> (  &<GroupingTriad_tes> ;
+          rdf:type [ <GroupingTriad> ] ?
+       ) ;
+       rdf:type [ <PrototypeTriad> ] ?
+    )
+}
+
+<Quad>  (
+    {
+       (  $<Quad_tes> (  &<SubGraph_tes> ;
+             rdf:type [ <SubGraph> ] ?
+          ) ;
+          rdf:type [ <Quad> ] ?
+       )
+    } OR @<ContextualRefinementQuad>
+)
+
+<QuantityPattern> CLOSED {
+    (  $<QuantityPattern_tes> (  &<SubGraph_tes> ;
+          rdf:type [ <SubGraph> ] ?
+       ) ;
+       rdf:type [ <QuantityPattern> ] ?
+    )
+}
+
+<RaggedCrossProduct> CLOSED {
+    (  $<RaggedCrossProduct_tes> (  &<SparselyPopulatedCrossProduct_tes> ;
+          rdf:type [ <SparselyPopulatedCrossProduct> ] ?
+       ) ;
+       rdf:type [ <RaggedCrossProduct> ] ?
+    )
+}
+
+<Refactor>  (
+    CLOSED {
+       (  $<Refactor_tes> (  &<Delta_tes> ;
+             rdf:type [ <Delta> ] ?
+          ) ;
+          rdf:type [ <Refactor> ] ?
+       )
+    } OR @<ELShunt>
+)
+
+<ReflexiveInPropertyChain> CLOSED {
+    (  $<ReflexiveInPropertyChain_tes> (  &<SubGraph_tes> ;
+          rdf:type [ <SubGraph> ] ?
+       ) ;
+       rdf:type [ <ReflexiveInPropertyChain> ] ?
+    )
+}
+
+<SimpleGenusDifferentiaDefinition> CLOSED {
+    (  $<SimpleGenusDifferentiaDefinition_tes> (  &<SubGraph_tes> ;
+          rdf:type [ <SubGraph> ] ?
+       ) ;
+       rdf:type [ <SimpleGenusDifferentiaDefinition> ] ?
+    )
+}
+
+<SometimesAntiPattern> {
+    (  $<SometimesAntiPattern_tes> rdf:type . * ;
+       rdf:type [ <SometimesAntiPattern> ] ?
+    )
+}
+
+<SparselyPopulatedCrossProduct>  (
+    CLOSED {
+       (  $<SparselyPopulatedCrossProduct_tes> (  &<CrossProduct_tes> ;
+             rdf:type [ <CrossProduct> ] ?
+          ) ;
+          rdf:type [ <SparselyPopulatedCrossProduct> ] ?
+       )
+    } OR @<RaggedCrossProduct>
+)
+
+<SubClassTriad>  (
+    CLOSED {
+       (  $<SubClassTriad_tes> (  &<GroupingTriad_tes> ;
+             rdf:type [ <GroupingTriad> ] ? ;
+             <child1_to_parent_relationship_type> @linkml:String ? ;
+             <child2_to_parent_relationship_type> @linkml:String ?
+          ) ;
+          rdf:type [ <SubClassTriad> ] ?
+       )
+    } OR @<ComplementSubClassTriad> OR @<DisjointSubClassTriad> OR @<ImbalancedSubClassTriad> OR @<ImplicitJEPDSubClassTriad> OR
+    @<JEPDSubClassTriad> OR @<MixedAxisSubClassTriad>
+)
+
+<SubGraph>  (
+    @<AllValuesFromCardinalityAntiPattern> OR @<AllValuesFromTransitiveAntiPattern> OR @<ContextualRange> OR @<CrossProduct> OR
+    @<MeasurementPattern> OR @<NAryRelationship> OR @<Pair> OR @<Quad> OR @<QuantityPattern> OR @<ReflexiveInPropertyChain> OR
+    @<SimpleGenusDifferentiaDefinition> OR @<Triad> OR @<UpperOntologyConflation>
+)
+
+<SubGraph_struct> {
+    (  $<SubGraph_tes> (  &<Pattern_tes> ;
+          rdf:type [ <Pattern> ] ? ;
+          dcterms:title @linkml:String ? ;
+          dcterms:description @linkml:String ? ;
+          dcterms:source @linkml:String ? ;
+          <variant_of> @<SubGraph> * ;
+          <should_be_replaced_by> @<SubGraph> ?
+       ) ;
+       rdf:type [ <SubGraph> ] ?
+    )
+}
+
+<Triad>  (
+    {
+       (  $<Triad_tes> (  &<SubGraph_tes> ;
+             rdf:type [ <SubGraph> ] ?
+          ) ;
+          rdf:type [ <Triad> ] ?
+       )
+    } OR @<GroupingTriad>
+)
+
+<UpperOntologyConflation> CLOSED {
+    (  $<UpperOntologyConflation_tes> (  &<SubGraph_tes> ;
+          rdf:type [ <SubGraph> ] ?
+       ) ;
+       rdf:type [ <UpperOntologyConflation> ] ?
+    )
+}
+
+

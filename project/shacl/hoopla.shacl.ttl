@@ -1,0 +1,1603 @@
+@prefix hoopla: <https://w3id.org/hoopla/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+hoopla:AllValuesFromCardinalityAntiPattern a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "AllValuesFrom Transitive AntiPattern" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ] ;
+    sh:targetClass hoopla:AllValuesFromCardinalityAntiPattern .
+
+hoopla:AllValuesFromTransitiveAntiPattern a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "AllValuesFrom Transitive AntiPattern" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ] ;
+    sh:targetClass hoopla:AllValuesFromTransitiveAntiPattern .
+
+hoopla:AntiPattern a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A mixin for patterns that should be avoided" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass hoopla:AntiPattern .
+
+hoopla:ComplementSubClassTriad a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "Complement SubClass Triad" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:class hoopla:JEPDSubClassTriad ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ] ;
+    sh:targetClass hoopla:ComplementSubClassTriad .
+
+hoopla:ContextualRange a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 7 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:range_class ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:domain_class ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path <dcterms:description> ] ;
+    sh:targetClass hoopla:ContextualRange .
+
+hoopla:ContextualRangeUsingDisjointnessAxiom a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 7 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:domain_class ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:range_class ] ;
+    sh:targetClass hoopla:ContextualRangeUsingDisjointnessAxiom .
+
+hoopla:ContextualRangeUsingUniversalAxiom a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 7 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:range_class ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:domain_class ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:relationship_type ] ;
+    sh:targetClass hoopla:ContextualRangeUsingUniversalAxiom .
+
+hoopla:ContextualRefinementQuad a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ] ;
+    sh:targetClass hoopla:ContextualRefinementQuad .
+
+hoopla:CrossProduct a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:order 0 ;
+            sh:path hoopla:axes_of_classification ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:title> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path hoopla:type ] ;
+    sh:targetClass hoopla:CrossProduct .
+
+hoopla:Delta a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A pattern that involves two subgraphs, a before state and an after state. Elements in subgraph1 may be related to elements in subgraph2" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path hoopla:target_subgraph ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path hoopla:source_subgraph ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:type ] ;
+    sh:targetClass hoopla:Delta .
+
+hoopla:DenselyPopulatedCrossProduct a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:order 0 ;
+            sh:path hoopla:axes_of_classification ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <dcterms:source> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:description> ] ;
+    sh:targetClass hoopla:DenselyPopulatedCrossProduct .
+
+hoopla:DisjointSubClassTriad a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "Disjoint SubClass Triad" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ] ;
+    sh:targetClass hoopla:DisjointSubClassTriad .
+
+hoopla:ELShunt a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A refactor where non-EL axioms are migrated into a sub-module." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path hoopla:source_subgraph ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path hoopla:target_subgraph ] ;
+    sh:targetClass hoopla:ELShunt .
+
+hoopla:EvolvedFromTriad a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ] ;
+    sh:targetClass hoopla:EvolvedFromTriad .
+
+hoopla:Grouping a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass hoopla:Grouping .
+
+hoopla:GroupingPair a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A SubGraph in which the focus is a pair of nodes where one (child) is a part of a group formed by the other (parent)" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path <dcterms:title> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 7 ;
+            sh:path hoopla:variant_of ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 8 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child_to_parent_relationship_type ] ;
+    sh:targetClass hoopla:GroupingPair .
+
+hoopla:GroupingTriad a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ] ;
+    sh:targetClass hoopla:GroupingTriad .
+
+hoopla:ImbalancedSubClassTriad a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A SubClassTriad in which the size of the two subclasses are imbalanced" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "Imbalanced SubClass Triad" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ] ;
+    sh:targetClass hoopla:ImbalancedSubClassTriad .
+
+hoopla:ImplicitJEPDSubClassTriad a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A SubClassOfTriad where there is implicit undeclared axioms that would make this a JEPDSubClassTriad" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "Implicit Jointly Exhaustive Pairwise Disjoint SubClass Triad" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ],
+        [ sh:class hoopla:JEPDSubClassTriad ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ] ;
+    sh:targetClass hoopla:ImplicitJEPDSubClassTriad .
+
+hoopla:InstanceContextualRefinementQuad a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ] ;
+    sh:targetClass hoopla:InstanceContextualRefinementQuad .
+
+hoopla:MeasurementPattern a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ] ;
+    sh:targetClass hoopla:MeasurementPattern .
+
+hoopla:MixedAxisSubClassTriad a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A SubClassTriad in which the two subclasses are classified on different axes" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "Mixed Axis SubClass Triad" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ] ;
+    sh:targetClass hoopla:MixedAxisSubClassTriad .
+
+hoopla:NAryRelationship a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ] ;
+    sh:targetClass hoopla:NAryRelationship .
+
+hoopla:Pair a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "An abstract SubGraph in which the focus is a pair of nodes" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ] ;
+    sh:targetClass hoopla:Pair .
+
+hoopla:PartWholeTriad a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ] ;
+    sh:targetClass hoopla:PartWholeTriad .
+
+hoopla:PatternInstantiationCollection a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A combination of an ontology plus any number of pattern instances" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hoopla:Ontology ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path hoopla:ontology ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:description ],
+        [ sh:class hoopla:Pattern ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:patterns ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:title ] ;
+    sh:targetClass hoopla:PatternInstantiationCollection .
+
+hoopla:PrototypeSubClassTriadAntipattern a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A variant of PrototypeTriad where the relationship type is subclass" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:class hoopla:PrototypeTriad ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ] ;
+    sh:targetClass hoopla:PrototypeSubClassTriadAntipattern .
+
+hoopla:Quad a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "An abstract SubGraph in which the focus is a quad of nodes" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ] ;
+    sh:targetClass hoopla:Quad .
+
+hoopla:QuantityPattern a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ] ;
+    sh:targetClass hoopla:QuantityPattern .
+
+hoopla:RaggedCrossProduct a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:order 0 ;
+            sh:path hoopla:axes_of_classification ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <dcterms:source> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:variant_of ] ;
+    sh:targetClass hoopla:RaggedCrossProduct .
+
+hoopla:Refactor a sh:NodeShape ;
+    sh:closed true ;
+    sh:description """A delta where the source is intentionally transformed to the target in order
+to achieve some objective.""" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path hoopla:source_subgraph ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path hoopla:target_subgraph ] ;
+    sh:targetClass hoopla:Refactor .
+
+hoopla:ReflexiveInPropertyChain a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ] ;
+    sh:targetClass hoopla:ReflexiveInPropertyChain .
+
+hoopla:SimpleGenusDifferentiaDefinition a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ] ;
+    sh:targetClass hoopla:SimpleGenusDifferentiaDefinition .
+
+hoopla:SometimesAntiPattern a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A mixin for patterns that are sometimes considered anti-patterns" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass hoopla:SometimesAntiPattern .
+
+hoopla:SparselyPopulatedCrossProduct a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <dcterms:source> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:order 0 ;
+            sh:path hoopla:axes_of_classification ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:description> ] ;
+    sh:targetClass hoopla:SparselyPopulatedCrossProduct .
+
+hoopla:SubClassTriad a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A SubGraph in which the focus is a trio of nodes" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ] ;
+    sh:targetClass hoopla:SubClassTriad .
+
+hoopla:Triad a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "An abstract SubGraph in which the focus is a trio of nodes" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ] ;
+    sh:targetClass hoopla:Triad .
+
+hoopla:UpperOntologyConflation a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ] ;
+    sh:targetClass hoopla:UpperOntologyConflation .
+
+hoopla:Entity a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "Entities can be patterns or individual elements" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Human-readable name for a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <rdfs:label> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:id ] ;
+    sh:targetClass hoopla:Entity .
+
+hoopla:Ontology a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable name for a thing" ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <rdfs:label> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:source ],
+        [ sh:class <owl:Class> ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path hoopla:classes ] ;
+    sh:targetClass hoopla:Ontology .
+
+hoopla:Pattern a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "Abstract base class for all patterns. A pattern class defines a set of entities (which may be classes or individuals or other entities), together with relationships that hold between them." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:type ] ;
+    sh:targetClass hoopla:Pattern .
+
+hoopla:PrototypeTriad a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A GroupingTriad where the parent is a prototypical form" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ] ;
+    sh:targetClass hoopla:PrototypeTriad .
+
+<owl:Class> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class hoopla:Entity ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path hoopla:members ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:size ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable name for a thing" ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <rdfs:label> ] ;
+    sh:targetClass <owl:Class> .
+
+hoopla:JEPDSubClassTriad a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "Jointly Exhaustive Pairwise Disjoint SubClass Triad" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path hoopla:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:additional_axioms ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path hoopla:child2 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <dcterms:source> ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path hoopla:variant_of ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path hoopla:parent ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 10 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path hoopla:child1_to_parent_relationship_type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path hoopla:child1 ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path hoopla:child2_to_parent_relationship_type ] ;
+    sh:targetClass hoopla:JEPDSubClassTriad .
+
+hoopla:SubGraph a sh:NodeShape ;
+    sh:closed false ;
+    sh:description """A pattern that corresponds to a static collection of entities in
+a single graph or ontology.""" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path hoopla:type ],
+        [ sh:class hoopla:SubGraph ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path hoopla:variant_of ],
+        [ sh:class hoopla:SubGraph ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 4 ;
+            sh:path hoopla:should_be_replaced_by ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <dcterms:title> ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <dcterms:source> ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable description of a thing" ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ] ;
+    sh:targetClass hoopla:SubGraph .
+

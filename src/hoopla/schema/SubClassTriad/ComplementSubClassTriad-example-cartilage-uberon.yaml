@@ -1,0 +1,12 @@
+title: Anatomical example of ComplementSubClassTriad
+description: mineralized and non-mineralized cartilage tissue
+source: uberon
+parent:
+  id: UBERON:0002418
+  label: cartilage tissue
+child1:
+  id: UBERON:4000088
+  label: mineralized cartilage tissue
+child2:
+  id: UBERON:0011589
+  label: non-mineralized cartilage tissue

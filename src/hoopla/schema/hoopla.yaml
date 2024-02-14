@@ -1,0 +1,425 @@
+id: https://w3id.org/hoopla
+name: hoopla
+title: Higher Order Ontology Pattern LibrAry
+description: |-
+  A library of high level ontology patterns.
+license: BSD-3
+see_also:
+  - https://cmungall.github.io/hoopla
+source: https://docs.google.com/document/d/1QH4AxCVQOHe6P8vFpBCwi22ptITbK_tGHR5bwdIt22c/edit
+  
+prefixes:
+  hoopla: https://w3id.org/hoopla/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/
+  schema: http://schema.org/
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  example: https://example.org/
+  opla: http://ontologydesignpatterns.org/opla/
+default_prefix: hoopla
+default_range: string
+
+imports:
+  - linkml:types
+
+subsets:
+
+  Basic:
+  NonELProfile:
+    description: Includes elements not expressible in an EL profile
+
+slots:
+
+  id:
+    identifier: true
+
+  label:
+    slot_uri: rdfs:label
+    description: Human-readable name for a thing
+
+  type:
+    designates_type: true
+
+  title:
+    slot_uri: dcterms:title
+
+  source:
+    slot_uri: dcterms:source
+
+  description:
+    slot_uri: dcterms:description
+    description: Human-readable description of a thing
+
+  variant_of:
+    range: SubGraph
+    multivalued: true
+  should_be_replaced_by:
+    range: SubGraph
+
+  related_to:
+    abstract: true
+
+  relationship_type:
+    is_a: related_to
+  parent:
+    is_a: related_to
+  child:
+    is_a: related_to
+  child1:
+    is_a: child
+  child2:
+    is_a: child
+  axiom:
+  relationship:
+    is_a: axiom
+  child_to_parent_relationship:
+    is_a: relationship
+  child_to_parent_relationship_type:
+    is_a: relationship_type
+  child1_to_parent_relationship_type:
+    is_a: child_to_parent_relationship_type
+  child2_to_parent_relationship_type:
+    is_a: child_to_parent_relationship_type
+  additional_axioms:
+  domain_class:
+  range_class:
+
+  members:
+    range: Entity
+    multivalued: true
+  size:
+    range: integer
+    
+classes:
+
+  PatternInstantiationCollection:
+    tree_root: true
+    description: >-
+      A combination of an ontology plus any number of pattern instances
+    attributes:
+      title:
+      description:
+      ontology:
+        range: Ontology
+        inlined: true
+      patterns:
+        range: Pattern
+        multivalued: true
+
+  Entity:
+    abstract: true
+    description: >-
+      Entities can be patterns or individual elements
+    slots:
+      - id
+      - label
+
+  Ontology:
+    is_a: Entity
+    attributes:
+      classes:
+        range: Class
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      source:
+    exact_mappings:
+      - owl:Ontology
+
+  Class:
+    is_a: Entity
+    class_uri: owl:Class
+    slots:
+      - members
+      - size
+
+  AntiPattern:
+    mixin: true
+    description: A mixin for patterns that should be avoided
+
+  SometimesAntiPattern:
+    mixin: true
+    description: A mixin for patterns that are sometimes considered anti-patterns
+
+  Grouping:
+    mixin: true
+
+  Pattern:
+    abstract: true
+    description: >-
+      Abstract base class for all patterns. A pattern class defines a set
+      of entities (which may be classes or individuals or other entities),
+      together with relationships that hold between them.
+    slots:
+      - type
+
+  SubGraph:
+    abstract: true
+    is_a: Pattern
+    description: |-
+      A pattern that corresponds to a static collection of entities in
+      a single graph or ontology.
+    slots:
+      - title
+      - description
+      - source
+      - variant_of
+      - should_be_replaced_by
+      
+  Pair:
+    abstract: true
+    description: |-
+      An abstract SubGraph in which the focus is a pair of nodes
+    is_a: SubGraph
+
+  Triad:
+    abstract: true
+    description: |-
+      An abstract SubGraph in which the focus is a trio of nodes
+    is_a: SubGraph
+      
+  Quad:
+    abstract: true
+    description: |-
+      An abstract SubGraph in which the focus is a quad of nodes
+    is_a: SubGraph
+
+  GroupingPair:
+    abstract: true
+    description: |-
+      A SubGraph in which the focus is a pair of nodes where one (child) is a part of a group formed by the other (parent)
+    is_a: Pair
+    mixins:
+      - Grouping
+    slots:
+      - parent
+      - child
+      - child_to_parent_relationship_type
+      - additional_axioms
+      
+  GroupingTriad:
+    abstract: true
+    is_a: Triad
+    mixins:
+      - Grouping
+    slots:
+      - parent
+      - child1
+      - child2
+      - child1_to_parent_relationship_type
+      - child2_to_parent_relationship_type
+      - additional_axioms
+      
+  SubClassTriad:
+    description: |-
+      A SubGraph in which the focus is a trio of nodes
+    is_a: GroupingTriad
+    slot_usage:
+      child1_to_parent_relationship_type:
+        equals_string: "owl:SubClassOf"
+      child2_to_parent_relationship_type:
+        equals_string: "owl:SubClassOf"
+    examples:
+      - description: A Occupation parent that groups two subclasses Teacher and Welder
+        
+  ImbalancedSubClassTriad:
+    title: Imbalanced SubClass Triad
+    description: A SubClassTriad in which the size of the two subclasses are imbalanced
+    comments:
+      - Can sometimes be an antipattern
+    is_a: SubClassTriad
+    mixins:
+      - SometimesAntiPattern
+    examples:
+      - description: A PedalledVehicle parent and subclasses Bicycle and Unicycle
+    
+        
+  MixedAxisSubClassTriad:
+    title: Mixed Axis SubClass Triad
+    description: A SubClassTriad in which the two subclasses are classified on different axes
+    is_a: SubClassTriad
+    mixins:
+      - SometimesAntiPattern
+    comments:
+      - Although not an antipattern this can confuse users
+      - This is an antipattern when subclass assertions are asserted
+    examples:
+      - description: A class Car with two subclasses BlueCar and Volkswagen
+        
+  DisjointSubClassTriad:
+    title: Disjoint SubClass Triad
+    is_a: SubClassTriad
+    annotations:
+      owl.template: |-
+        DisjointClasses( {{child1}} {{child2}} )
+    examples:
+      - description: a class Vehicle with subclasses Bicycle and MotorCar
+        
+  JEPDSubClassTriad:
+    title: Jointly Exhaustive Pairwise Disjoint SubClass Triad
+    is_a: SubClassTriad
+    annotations:
+      owl.template: |-
+        DisjointUnion( {{parent}} {{child1}} {{child2}} )
+        
+  ComplementSubClassTriad:
+    title: Complement SubClass Triad
+    is_a: SubClassTriad
+    mixins:
+      - SometimesAntiPattern
+    slot_usage:
+      variant_of:
+        range: JEPDSubClassTriad
+    annotations:
+      owl.template: |-
+        EquivalentClasses( {{child1}} ObjectIntersectionOf( {{parent}} ObjectComplementOf( {{child2}} )))
+    examples:
+      - description: a parent Animal and child1 Vertebrate and child2 InvertebrateAnimal
+        
+  ImplicitJEPDSubClassTriad:
+    title: Implicit Jointly Exhaustive Pairwise Disjoint SubClass Triad
+    description: |-
+      A SubClassOfTriad where there is implicit undeclared axioms that would make this a JEPDSubClassTriad
+    is_a: SubClassTriad
+    mixins:
+      - AntiPattern
+    slot_usage:
+      should_be_replaced_by:
+        range: JEPDSubClassTriad
+    annotations:
+      missing_axioms: |-
+        DisjointUnion( {{parent}} {{child1}} {{child2}} )
+        
+  PartWholeTriad:
+    is_a: GroupingTriad
+    slot_usage:
+      child1_to_parent_relationship_type:
+        equals_string: "BFO:0000050"
+      child2_to_parent_relationship_type:
+        equals_string: "BFO:0000050"
+    
+  PrototypeTriad:
+    description: |-
+      A GroupingTriad where the parent is a prototypical form
+    is_a: GroupingTriad
+    examples:
+      - description: a parent class Milk and child classes PlantBasedMilk and AnimalMilk
+    
+  PrototypeSubClassTriadAntipattern:
+    description: |-
+      A variant of PrototypeTriad where the relationship type is subclass
+    is_a: GroupingTriad
+    slot_usage:
+      child1_to_parent_relationship_type:
+        equals_string: "owl:subClassOf"
+      child2_to_parent_relationship_type:
+        equals_string: "owl:subClassOf"
+      should_be_replaced_by:
+        range: PrototypeTriad
+    examples:
+      - description: a parent class Milk and subclasses PlantBasedMilk and CowMilk
+    
+  EvolvedFromTriad:
+    is_a: GroupingTriad
+    examples:
+      - description: a parent class ancestral SHH gene and child classes Human SHH gene and Mouse SHH gene
+
+  CrossProduct:
+    abstract: true
+    is_a: SubGraph
+    attributes:
+      axes_of_classification:
+        multivalued: true
+
+  DenselyPopulatedCrossProduct:
+    is_a: CrossProduct
+    examples:
+      - description: all combinations of {measurement} x {anatomical entity}
+
+  SparselyPopulatedCrossProduct:
+    is_a: CrossProduct
+
+  RaggedCrossProduct:
+    is_a: SparselyPopulatedCrossProduct
+
+  NAryRelationship:
+    is_a: SubGraph
+  MeasurementPattern:
+    is_a: SubGraph
+  QuantityPattern:
+    is_a: SubGraph
+  ReflexiveInPropertyChain:
+    is_a: SubGraph
+
+  AllValuesFromTransitiveAntiPattern:
+    title: AllValuesFrom Transitive AntiPattern
+    is_a: SubGraph
+
+  AllValuesFromCardinalityAntiPattern:
+    title: AllValuesFrom Transitive AntiPattern
+    is_a: SubGraph
+    see_also:
+      - https://douroucouli.wordpress.com/2021/03/24/avoid-mixing-parthood-with-cardinality-constraints/
+
+  ContextualRange:
+    abstract: true
+    is_a: SubGraph
+    slots:
+      - domain_class
+      - relationship_type
+      - range_class
+    examples:
+      - description: If MaterialEntity is part of anything, that thing must be a MaterialEntity
+    
+  ContextualRangeUsingUniversalAxiom:
+    is_a: ContextualRange
+    annotations:
+      owl.template: |-
+        SubClassOf( {{domain_class}} ObjectOnlyValuesFrom( {{relationship_type}} {{ range_class }} ))
+    
+  ContextualRangeUsingDisjointnessAxiom:
+    is_a: ContextualRange
+    annotations:
+      owl.template: |-
+        DisjointClasses( {{domain_class}} ObjectSomeValuesFrom( {{relationship_type}} {{ range_class }} ))
+
+  SimpleGenusDifferentiaDefinition:
+    is_a: SubGraph
+
+  ContextualRefinementQuad:
+    is_a: Quad
+
+  InstanceContextualRefinementQuad:
+    is_a: ContextualRefinementQuad
+    examples:
+      - description: (some specific instance of) Lmn-2 interacts with (some specific instance of) Elf-2
+    see_also:
+      - https://douroucouli.wordpress.com/2019/03/14/biological-knowledge-graph-modeling-design-patterns/
+      - https://philarchive.org/rec/JANLIW
+
+  UpperOntologyConflation:
+    is_a: SubGraph
+      
+  Delta:
+    is_a: Pattern
+    description: >-
+      A pattern that involves two subgraphs, a before state and an after state.
+      Elements in subgraph1 may be related to elements
+      in subgraph2
+    attributes:
+      source_subgraph:
+        range: SubGraph
+      target_subgraph:
+        range: SubGraph
+
+  Refactor:
+    is_a: Delta
+    description: |-
+      A delta where the source is intentionally transformed to the target in order
+      to achieve some objective.
+
+  ELShunt:
+    is_a: Refactor
+    description:
+      A refactor where non-EL axioms are migrated into a sub-module.
+

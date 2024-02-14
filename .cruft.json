@@ -1,0 +1,28 @@
+{
+  "template": "https://github.com/linkml/linkml-project-cookiecutter",
+  "commit": "bf6174ec790768103020ae1a1e1f1364ae339295",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "hoopla",
+      "__project_slug": "hoopla",
+      "github_org": "cmungall",
+      "__source_path": "src/hoopla/schema/hoopla.yaml",
+      "project_description": "Higher Order Ontology Pattern LibrAry",
+      "full_name": "Chris Mungall",
+      "email": "cjmungall@lbl.gov",
+      "__author": "Chris Mungall <cjmungall@lbl.gov>",
+      "license": "BSD-3",
+      "google_analytics_gtag": "G-2SYBSJVZ23",
+      "main_schema_class": "Pattern",
+      "create_python_classes": "Yes",
+      "use_schemasheets": "No",
+      "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
+      "google_sheet_tabs": "personinfo enums",
+      "__google_sheet_module": "personinfo_enums",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_template": "https://github.com/linkml/linkml-project-cookiecutter"
+    }
+  },
+  "directory": null
+}

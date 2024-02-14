@@ -1,0 +1,11 @@
+id: UBERON:x
+classes:
+-
+  id: UBERON:0002101
+  label: limb
+-
+  id: UBERON:0002102
+  label: forelimb
+-
+  id: UBERON:0002103
+  label: hindlimb

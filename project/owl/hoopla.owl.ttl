@@ -1,0 +1,1041 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix hoopla: <https://w3id.org/hoopla/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+hoopla:PatternInstantiationCollection a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "PatternInstantiationCollection" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:ontology ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:ontology ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:patterns ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hoopla:Pattern ;
+            owl:onProperty hoopla:patterns ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hoopla:Ontology ;
+            owl:onProperty hoopla:ontology ] ;
+    skos:definition "A combination of an ontology plus any number of pattern instances" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:child_to_parent_relationship a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "child_to_parent_relationship" ;
+    rdfs:subPropertyOf hoopla:relationship ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:AntiPattern a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "AntiPattern" ;
+    skos:definition "A mixin for patterns that should be avoided" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:Class a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Class" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hoopla:Entity ;
+            owl:onProperty hoopla:members ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:members ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty hoopla:size ],
+        hoopla:Entity ;
+    skos:exactMatch <owl:Class> ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:Ontology a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Ontology" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hoopla:Class ;
+            owl:onProperty hoopla:classes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:classes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:source ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:source ],
+        hoopla:Entity ;
+    skos:exactMatch <owl:Ontology> ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:axiom a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "axiom" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:relationship a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "relationship" ;
+    rdfs:subPropertyOf hoopla:axiom ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:AllValuesFromCardinalityAntiPattern a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "AllValuesFromCardinalityAntiPattern" ;
+    dcterms:title "AllValuesFrom Transitive AntiPattern" ;
+    rdfs:seeAlso <https://douroucouli.wordpress.com/2021/03/24/avoid-mixing-parthood-with-cardinality-constraints/> ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:AllValuesFromTransitiveAntiPattern a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "AllValuesFromTransitiveAntiPattern" ;
+    dcterms:title "AllValuesFrom Transitive AntiPattern" ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:ComplementSubClassTriad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ComplementSubClassTriad" ;
+    dcterms:title "Complement SubClass Triad" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:variant_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hoopla:JEPDSubClassTriad ;
+            owl:onProperty hoopla:variant_of ],
+        hoopla:SometimesAntiPattern,
+        hoopla:SubClassTriad ;
+    skos:inScheme <https://w3id.org/hoopla> ;
+    hoopla:owl.template "EquivalentClasses( {{child1}} ObjectIntersectionOf( {{parent}} ObjectComplementOf( {{child2}} )))" .
+
+hoopla:ContextualRangeUsingDisjointnessAxiom a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ContextualRangeUsingDisjointnessAxiom" ;
+    rdfs:subClassOf hoopla:ContextualRange ;
+    skos:inScheme <https://w3id.org/hoopla> ;
+    hoopla:owl.template "DisjointClasses( {{domain_class}} ObjectSomeValuesFrom( {{relationship_type}} {{ range_class }} ))" .
+
+hoopla:ContextualRangeUsingUniversalAxiom a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ContextualRangeUsingUniversalAxiom" ;
+    rdfs:subClassOf hoopla:ContextualRange ;
+    skos:inScheme <https://w3id.org/hoopla> ;
+    hoopla:owl.template "SubClassOf( {{domain_class}} ObjectOnlyValuesFrom( {{relationship_type}} {{ range_class }} ))" .
+
+hoopla:DenselyPopulatedCrossProduct a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DenselyPopulatedCrossProduct" ;
+    rdfs:subClassOf hoopla:CrossProduct ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:DisjointSubClassTriad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DisjointSubClassTriad" ;
+    dcterms:title "Disjoint SubClass Triad" ;
+    rdfs:subClassOf hoopla:SubClassTriad ;
+    skos:inScheme <https://w3id.org/hoopla> ;
+    hoopla:owl.template "DisjointClasses( {{child1}} {{child2}} )" .
+
+hoopla:ELShunt a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ELShunt" ;
+    rdfs:subClassOf hoopla:Refactor ;
+    skos:definition "A refactor where non-EL axioms are migrated into a sub-module." ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:EvolvedFromTriad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "EvolvedFromTriad" ;
+    rdfs:subClassOf hoopla:GroupingTriad ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:Grouping a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Grouping" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:GroupingPair a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "GroupingPair" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:additional_axioms ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:parent ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:additional_axioms ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:parent ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:additional_axioms ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:parent ],
+        hoopla:Grouping,
+        hoopla:Pair ;
+    skos:definition "A SubGraph in which the focus is a pair of nodes where one (child) is a part of a group formed by the other (parent)" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:ImbalancedSubClassTriad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ImbalancedSubClassTriad" ;
+    dcterms:title "Imbalanced SubClass Triad" ;
+    rdfs:subClassOf hoopla:SometimesAntiPattern,
+        hoopla:SubClassTriad ;
+    skos:definition "A SubClassTriad in which the size of the two subclasses are imbalanced" ;
+    skos:inScheme <https://w3id.org/hoopla> ;
+    skos:note "Can sometimes be an antipattern" .
+
+hoopla:ImplicitJEPDSubClassTriad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ImplicitJEPDSubClassTriad" ;
+    dcterms:title "Implicit Jointly Exhaustive Pairwise Disjoint SubClass Triad" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:should_be_replaced_by ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:should_be_replaced_by ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hoopla:JEPDSubClassTriad ;
+            owl:onProperty hoopla:should_be_replaced_by ],
+        hoopla:AntiPattern,
+        hoopla:SubClassTriad ;
+    skos:definition "A SubClassOfTriad where there is implicit undeclared axioms that would make this a JEPDSubClassTriad" ;
+    skos:inScheme <https://w3id.org/hoopla> ;
+    hoopla:missing_axioms "DisjointUnion( {{parent}} {{child1}} {{child2}} )" .
+
+hoopla:InstanceContextualRefinementQuad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "InstanceContextualRefinementQuad" ;
+    rdfs:seeAlso <https://douroucouli.wordpress.com/2019/03/14/biological-knowledge-graph-modeling-design-patterns/>,
+        <https://philarchive.org/rec/JANLIW> ;
+    rdfs:subClassOf hoopla:ContextualRefinementQuad ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:MeasurementPattern a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "MeasurementPattern" ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:MixedAxisSubClassTriad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "MixedAxisSubClassTriad" ;
+    dcterms:title "Mixed Axis SubClass Triad" ;
+    rdfs:subClassOf hoopla:SometimesAntiPattern,
+        hoopla:SubClassTriad ;
+    skos:definition "A SubClassTriad in which the two subclasses are classified on different axes" ;
+    skos:inScheme <https://w3id.org/hoopla> ;
+    skos:note "Although not an antipattern this can confuse users",
+        "This is an antipattern when subclass assertions are asserted" .
+
+hoopla:NAryRelationship a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "NAryRelationship" ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:PartWholeTriad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "PartWholeTriad" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        hoopla:GroupingTriad ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:PrototypeSubClassTriadAntipattern a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "PrototypeSubClassTriadAntipattern" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hoopla:PrototypeTriad ;
+            owl:onProperty hoopla:should_be_replaced_by ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:should_be_replaced_by ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:should_be_replaced_by ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        hoopla:GroupingTriad ;
+    skos:definition "A variant of PrototypeTriad where the relationship type is subclass" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:QuantityPattern a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantityPattern" ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:RaggedCrossProduct a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "RaggedCrossProduct" ;
+    rdfs:subClassOf hoopla:SparselyPopulatedCrossProduct ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:ReflexiveInPropertyChain a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ReflexiveInPropertyChain" ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:SimpleGenusDifferentiaDefinition a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SimpleGenusDifferentiaDefinition" ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:UpperOntologyConflation a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "UpperOntologyConflation" ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:axes_of_classification a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "axes_of_classification" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:classes a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "classes" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:members a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "members" ;
+    rdfs:range hoopla:Entity ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:patterns a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "patterns" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:ContextualRefinementQuad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ContextualRefinementQuad" ;
+    rdfs:subClassOf hoopla:Quad ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:Delta a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Delta" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:target_subgraph ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hoopla:SubGraph ;
+            owl:onProperty hoopla:source_subgraph ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:target_subgraph ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:source_subgraph ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:source_subgraph ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hoopla:SubGraph ;
+            owl:onProperty hoopla:target_subgraph ],
+        hoopla:Pattern ;
+    skos:definition "A pattern that involves two subgraphs, a before state and an after state. Elements in subgraph1 may be related to elements in subgraph2" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:Pair a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Pair" ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    skos:definition "An abstract SubGraph in which the focus is a pair of nodes" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:PrototypeTriad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "PrototypeTriad" ;
+    rdfs:subClassOf hoopla:GroupingTriad ;
+    skos:definition "A GroupingTriad where the parent is a prototypical form" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:Quad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Quad" ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    skos:definition "An abstract SubGraph in which the focus is a quad of nodes" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:Refactor a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Refactor" ;
+    rdfs:subClassOf hoopla:Delta ;
+    skos:definition """A delta where the source is intentionally transformed to the target in order
+to achieve some objective.""" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:SometimesAntiPattern a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SometimesAntiPattern" ;
+    skos:definition "A mixin for patterns that are sometimes considered anti-patterns" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:SparselyPopulatedCrossProduct a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SparselyPopulatedCrossProduct" ;
+    rdfs:subClassOf hoopla:CrossProduct ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:Triad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Triad" ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    skos:definition "An abstract SubGraph in which the focus is a trio of nodes" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:child1 a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "child1" ;
+    rdfs:subPropertyOf hoopla:child ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:child2 a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "child2" ;
+    rdfs:subPropertyOf hoopla:child ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:domain_class a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "domain_class" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:id a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "id" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:label a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "label" ;
+    skos:definition "Human-readable name for a thing" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:ontology a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "ontology" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:range_class a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "range_class" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:related_to a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "related_to" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:size a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "size" ;
+    rdfs:range linkml:Integer ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:source_subgraph a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "source_subgraph" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:target_subgraph a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "target_subgraph" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:ContextualRange a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ContextualRange" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:domain_class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:range_class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:relationship_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:relationship_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:range_class ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:domain_class ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:range_class ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:domain_class ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:relationship_type ],
+        hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:CrossProduct a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "CrossProduct" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:axes_of_classification ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:axes_of_classification ],
+        hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:Entity a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Entity" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty hoopla:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:label ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:label ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:label ] ;
+    skos:definition "Entities can be patterns or individual elements" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:JEPDSubClassTriad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "JEPDSubClassTriad" ;
+    dcterms:title "Jointly Exhaustive Pairwise Disjoint SubClass Triad" ;
+    rdfs:subClassOf hoopla:SubClassTriad ;
+    skos:inScheme <https://w3id.org/hoopla> ;
+    hoopla:owl.template "DisjointUnion( {{parent}} {{child1}} {{child2}} )" .
+
+hoopla:relationship_type a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "relationship_type" ;
+    rdfs:subPropertyOf hoopla:related_to ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:variant_of a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "variant_of" ;
+    rdfs:range hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:Pattern a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Pattern" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:type ] ;
+    skos:definition "Abstract base class for all patterns. A pattern class defines a set of entities (which may be classes or individuals or other entities), together with relationships that hold between them." ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:child a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "child" ;
+    rdfs:subPropertyOf hoopla:related_to ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:child_to_parent_relationship_type a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "child_to_parent_relationship_type" ;
+    rdfs:subPropertyOf hoopla:relationship_type ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:additional_axioms a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "additional_axioms" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:description a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    skos:definition "Human-readable description of a thing" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:parent a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "parent" ;
+    rdfs:subPropertyOf hoopla:related_to ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:source a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "source" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:title a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "title" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:GroupingTriad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "GroupingTriad" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:additional_axioms ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:parent ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child1 ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child2 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:additional_axioms ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child2 ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:additional_axioms ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child2 ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:parent ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child1 ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:parent ],
+        hoopla:Grouping,
+        hoopla:Triad ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:SubClassTriad a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SubClassTriad" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:child1_to_parent_relationship_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:child2_to_parent_relationship_type ],
+        hoopla:GroupingTriad ;
+    skos:definition "A SubGraph in which the focus is a trio of nodes" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:should_be_replaced_by a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "should_be_replaced_by" ;
+    rdfs:range hoopla:SubGraph ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:child1_to_parent_relationship_type a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "child1_to_parent_relationship_type" ;
+    rdfs:subPropertyOf hoopla:child_to_parent_relationship_type ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:child2_to_parent_relationship_type a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "child2_to_parent_relationship_type" ;
+    rdfs:subPropertyOf hoopla:child_to_parent_relationship_type ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:SubGraph a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "SubGraph" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hoopla:SubGraph ;
+            owl:onProperty hoopla:variant_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hoopla:SubGraph ;
+            owl:onProperty hoopla:should_be_replaced_by ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:variant_of ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty hoopla:should_be_replaced_by ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:should_be_replaced_by ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty hoopla:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty hoopla:description ],
+        hoopla:Pattern ;
+    skos:definition """A pattern that corresponds to a static collection of entities in
+a single graph or ontology.""" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+hoopla:type a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "type" ;
+    skos:inScheme <https://w3id.org/hoopla> .
+
+<https://w3id.org/hoopla> a owl:Ontology ;
+    rdfs:label "hoopla" ;
+    dcterms:license "BSD-3" ;
+    dcterms:source <https://docs.google.com/document/d/1QH4AxCVQOHe6P8vFpBCwi22ptITbK_tGHR5bwdIt22c/edit> ;
+    dcterms:title "Higher Order Ontology Pattern LibrAry" ;
+    rdfs:seeAlso <https://cmungall.github.io/hoopla> ;
+    skos:definition "A library of high level ontology patterns." .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:PrototypeTriad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:PrototypeTriad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:DisjointSubClassTriad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:DisjointSubClassTriad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:GroupingTriad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:GroupingTriad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:QuantityPattern ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:QuantityPattern .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:PartWholeTriad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:PartWholeTriad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:ImplicitJEPDSubClassTriad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:ImplicitJEPDSubClassTriad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:ContextualRangeUsingUniversalAxiom ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:ContextualRangeUsingUniversalAxiom .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:SubGraph ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:SubGraph .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:InstanceContextualRefinementQuad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:InstanceContextualRefinementQuad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:UpperOntologyConflation ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:UpperOntologyConflation .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:ELShunt ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:ELShunt .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:SubClassTriad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:SubClassTriad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:EvolvedFromTriad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:EvolvedFromTriad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:NAryRelationship ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:NAryRelationship .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:Refactor ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:Refactor .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:Pattern ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:Pattern .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:GroupingPair ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:GroupingPair .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:Quad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:Quad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:ContextualRefinementQuad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:ContextualRefinementQuad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:CrossProduct ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:CrossProduct .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:AllValuesFromCardinalityAntiPattern ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:AllValuesFromCardinalityAntiPattern .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:MixedAxisSubClassTriad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:MixedAxisSubClassTriad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:JEPDSubClassTriad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:JEPDSubClassTriad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:DenselyPopulatedCrossProduct ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:DenselyPopulatedCrossProduct .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:SimpleGenusDifferentiaDefinition ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:SimpleGenusDifferentiaDefinition .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:Triad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:Triad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:PrototypeSubClassTriadAntipattern ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:PrototypeSubClassTriadAntipattern .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:RaggedCrossProduct ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:RaggedCrossProduct .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:ContextualRange ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:ContextualRange .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:Delta ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:Delta .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:ContextualRangeUsingDisjointnessAxiom ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:ContextualRangeUsingDisjointnessAxiom .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:Pair ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:Pair .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:AllValuesFromTransitiveAntiPattern ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:AllValuesFromTransitiveAntiPattern .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:SparselyPopulatedCrossProduct ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:SparselyPopulatedCrossProduct .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:ImbalancedSubClassTriad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:ImbalancedSubClassTriad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:ReflexiveInPropertyChain ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:ReflexiveInPropertyChain .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:ComplementSubClassTriad ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:ComplementSubClassTriad .
+
+[] a owl:Restriction ;
+    rdfs:subClassOf hoopla:MeasurementPattern ;
+    owl:onProperty hoopla:type ;
+    owl:someValuesFrom hoopla:MeasurementPattern .
+

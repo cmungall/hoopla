@@ -1,0 +1,2028 @@
+{
+  "name": "hoopla",
+  "description": "A library of high level ontology patterns.",
+  "title": "Higher Order Ontology Pattern LibrAry",
+  "source": "https://docs.google.com/document/d/1QH4AxCVQOHe6P8vFpBCwi22ptITbK_tGHR5bwdIt22c/edit",
+  "see_also": [
+    "https://cmungall.github.io/hoopla"
+  ],
+  "id": "https://w3id.org/hoopla",
+  "imports": [
+    "linkml:types"
+  ],
+  "license": "BSD-3",
+  "prefixes": [
+    {
+      "prefix_prefix": "hoopla",
+      "prefix_reference": "https://w3id.org/hoopla/"
+    },
+    {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    {
+      "prefix_prefix": "biolink",
+      "prefix_reference": "https://w3id.org/biolink/"
+    },
+    {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    },
+    {
+      "prefix_prefix": "PATO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/PATO_"
+    },
+    {
+      "prefix_prefix": "example",
+      "prefix_reference": "https://example.org/"
+    },
+    {
+      "prefix_prefix": "opla",
+      "prefix_reference": "http://ontologydesignpatterns.org/opla/"
+    }
+  ],
+  "default_prefix": "hoopla",
+  "default_range": "string",
+  "subsets": [
+    {
+      "name": "Basic",
+      "definition_uri": "https://w3id.org/hoopla/Basic",
+      "from_schema": "https://w3id.org/hoopla",
+      "@type": "SubsetDefinition"
+    },
+    {
+      "name": "NonELProfile",
+      "definition_uri": "https://w3id.org/hoopla/NonELProfile",
+      "description": "Includes elements not expressible in an EL profile",
+      "from_schema": "https://w3id.org/hoopla",
+      "@type": "SubsetDefinition"
+    }
+  ],
+  "types": [
+    {
+      "name": "string",
+      "definition_uri": "https://w3id.org/linkml/String",
+      "description": "A character string",
+      "notes": [
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.   If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "integer",
+      "definition_uri": "https://w3id.org/linkml/Integer",
+      "description": "An integer",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "boolean",
+      "definition_uri": "https://w3id.org/linkml/Boolean",
+      "description": "A binary (true or false) value",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean",
+      "repr": "bool",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "float",
+      "definition_uri": "https://w3id.org/linkml/Float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#float",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "double",
+      "definition_uri": "https://w3id.org/linkml/Double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "http://www.w3.org/2001/XMLSchema#double",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "decimal",
+      "definition_uri": "https://w3id.org/linkml/Decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "time",
+      "definition_uri": "https://w3id.org/linkml/Time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#time",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date",
+      "definition_uri": "https://w3id.org/linkml/Date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "http://www.w3.org/2001/XMLSchema#date",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "datetime",
+      "definition_uri": "https://w3id.org/linkml/Datetime",
+      "description": "The combination of a date and time",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "date_or_datetime",
+      "definition_uri": "https://w3id.org/linkml/DateOrDatetime",
+      "description": "Either a date or a datetime",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "https://w3id.org/linkml/DateOrDatetime",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uriorcurie",
+      "definition_uri": "https://w3id.org/linkml/Uriorcurie",
+      "description": "a URI or a CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "URIorCURIE",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "curie",
+      "definition_uri": "https://w3id.org/linkml/Curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"."
+      ],
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "Curie",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "uri",
+      "definition_uri": "https://w3id.org/linkml/Uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"."
+      ],
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "ncname",
+      "definition_uri": "https://w3id.org/linkml/Ncname",
+      "description": "Prefix part of CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NCName",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "objectidentifier",
+      "definition_uri": "https://w3id.org/linkml/Objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"."
+      ],
+      "comments": [
+        "Used for inheritance and type checking"
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "ElementIdentifier",
+      "uri": "http://www.w3.org/ns/shex#iri",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "nodeidentifier",
+      "definition_uri": "https://w3id.org/linkml/Nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "NodeIdentifier",
+      "uri": "http://www.w3.org/ns/shex#nonLiteral",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpointer",
+      "definition_uri": "https://w3id.org/linkml/Jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "jsonpath",
+      "definition_uri": "https://w3id.org/linkml/Jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "sparqlpath",
+      "definition_uri": "https://w3id.org/linkml/Sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"."
+      ],
+      "from_schema": "https://w3id.org/linkml/types",
+      "imported_from": "linkml:types",
+      "base": "str",
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "repr": "str",
+      "@type": "TypeDefinition"
+    }
+  ],
+  "slots": [
+    {
+      "name": "id",
+      "definition_uri": "https://w3id.org/hoopla/id",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/id",
+      "identifier": true,
+      "owner": "Entity",
+      "domain_of": [
+        "Entity"
+      ],
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "label",
+      "definition_uri": "https://w3id.org/hoopla/label",
+      "description": "Human-readable name for a thing",
+      "from_schema": "https://w3id.org/hoopla",
+      "mappings": [
+        "http://example.org/UNKNOWN/rdfs/label"
+      ],
+      "slot_uri": "http://example.org/UNKNOWN/rdfs/label",
+      "owner": "Entity",
+      "domain_of": [
+        "Entity"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "type",
+      "definition_uri": "https://w3id.org/hoopla/type",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/type",
+      "designates_type": true,
+      "owner": "Pattern",
+      "domain_of": [
+        "Pattern"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "title",
+      "definition_uri": "https://w3id.org/hoopla/title",
+      "from_schema": "https://w3id.org/hoopla",
+      "mappings": [
+        "http://example.org/UNKNOWN/dcterms/title"
+      ],
+      "slot_uri": "http://example.org/UNKNOWN/dcterms/title",
+      "owner": "SubGraph",
+      "domain_of": [
+        "SubGraph"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "source",
+      "definition_uri": "https://w3id.org/hoopla/source",
+      "from_schema": "https://w3id.org/hoopla",
+      "mappings": [
+        "http://example.org/UNKNOWN/dcterms/source"
+      ],
+      "slot_uri": "http://example.org/UNKNOWN/dcterms/source",
+      "owner": "SubGraph",
+      "domain_of": [
+        "SubGraph"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "description",
+      "definition_uri": "https://w3id.org/hoopla/description",
+      "description": "Human-readable description of a thing",
+      "from_schema": "https://w3id.org/hoopla",
+      "mappings": [
+        "http://example.org/UNKNOWN/dcterms/description"
+      ],
+      "slot_uri": "http://example.org/UNKNOWN/dcterms/description",
+      "owner": "SubGraph",
+      "domain_of": [
+        "SubGraph"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "variant_of",
+      "definition_uri": "https://w3id.org/hoopla/variant_of",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/variant_of",
+      "multivalued": true,
+      "owner": "SubGraph",
+      "domain_of": [
+        "SubGraph"
+      ],
+      "range": "SubGraph",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "should_be_replaced_by",
+      "definition_uri": "https://w3id.org/hoopla/should_be_replaced_by",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/should_be_replaced_by",
+      "owner": "SubGraph",
+      "domain_of": [
+        "SubGraph"
+      ],
+      "range": "SubGraph",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "related_to",
+      "definition_uri": "https://w3id.org/hoopla/related_to",
+      "from_schema": "https://w3id.org/hoopla",
+      "abstract": true,
+      "slot_uri": "https://w3id.org/hoopla/related_to",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "relationship_type",
+      "definition_uri": "https://w3id.org/hoopla/relationship_type",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "related_to",
+      "slot_uri": "https://w3id.org/hoopla/relationship_type",
+      "owner": "ContextualRange",
+      "domain_of": [
+        "ContextualRange"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "parent",
+      "definition_uri": "https://w3id.org/hoopla/parent",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "related_to",
+      "slot_uri": "https://w3id.org/hoopla/parent",
+      "owner": "GroupingTriad",
+      "domain_of": [
+        "GroupingPair",
+        "GroupingTriad"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "child",
+      "definition_uri": "https://w3id.org/hoopla/child",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "related_to",
+      "slot_uri": "https://w3id.org/hoopla/child",
+      "owner": "GroupingPair",
+      "domain_of": [
+        "GroupingPair"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "child1",
+      "definition_uri": "https://w3id.org/hoopla/child1",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "child",
+      "slot_uri": "https://w3id.org/hoopla/child1",
+      "owner": "GroupingTriad",
+      "domain_of": [
+        "GroupingTriad"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "child2",
+      "definition_uri": "https://w3id.org/hoopla/child2",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "child",
+      "slot_uri": "https://w3id.org/hoopla/child2",
+      "owner": "GroupingTriad",
+      "domain_of": [
+        "GroupingTriad"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "axiom",
+      "definition_uri": "https://w3id.org/hoopla/axiom",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/axiom",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "relationship",
+      "definition_uri": "https://w3id.org/hoopla/relationship",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "axiom",
+      "slot_uri": "https://w3id.org/hoopla/relationship",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "child_to_parent_relationship",
+      "definition_uri": "https://w3id.org/hoopla/child_to_parent_relationship",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "relationship",
+      "slot_uri": "https://w3id.org/hoopla/child_to_parent_relationship",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "child_to_parent_relationship_type",
+      "definition_uri": "https://w3id.org/hoopla/child_to_parent_relationship_type",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "relationship_type",
+      "slot_uri": "https://w3id.org/hoopla/child_to_parent_relationship_type",
+      "owner": "GroupingPair",
+      "domain_of": [
+        "GroupingPair"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "child1_to_parent_relationship_type",
+      "definition_uri": "https://w3id.org/hoopla/child1_to_parent_relationship_type",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "child_to_parent_relationship_type",
+      "slot_uri": "https://w3id.org/hoopla/child1_to_parent_relationship_type",
+      "owner": "GroupingTriad",
+      "domain_of": [
+        "GroupingTriad"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "child2_to_parent_relationship_type",
+      "definition_uri": "https://w3id.org/hoopla/child2_to_parent_relationship_type",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "child_to_parent_relationship_type",
+      "slot_uri": "https://w3id.org/hoopla/child2_to_parent_relationship_type",
+      "owner": "GroupingTriad",
+      "domain_of": [
+        "GroupingTriad"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "additional_axioms",
+      "definition_uri": "https://w3id.org/hoopla/additional_axioms",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/additional_axioms",
+      "owner": "GroupingTriad",
+      "domain_of": [
+        "GroupingPair",
+        "GroupingTriad"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "domain_class",
+      "definition_uri": "https://w3id.org/hoopla/domain_class",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/domain_class",
+      "owner": "ContextualRange",
+      "domain_of": [
+        "ContextualRange"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "range_class",
+      "definition_uri": "https://w3id.org/hoopla/range_class",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/range_class",
+      "owner": "ContextualRange",
+      "domain_of": [
+        "ContextualRange"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "members",
+      "definition_uri": "https://w3id.org/hoopla/members",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/members",
+      "multivalued": true,
+      "owner": "Class",
+      "domain_of": [
+        "Class"
+      ],
+      "range": "Entity",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "size",
+      "definition_uri": "https://w3id.org/hoopla/size",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/size",
+      "owner": "Class",
+      "domain_of": [
+        "Class"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "patternInstantiationCollection__title",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/title",
+      "alias": "title",
+      "owner": "PatternInstantiationCollection",
+      "domain_of": [
+        "PatternInstantiationCollection"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "patternInstantiationCollection__description",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/description",
+      "alias": "description",
+      "owner": "PatternInstantiationCollection",
+      "domain_of": [
+        "PatternInstantiationCollection"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "patternInstantiationCollection__ontology",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/ontology",
+      "alias": "ontology",
+      "owner": "PatternInstantiationCollection",
+      "domain_of": [
+        "PatternInstantiationCollection"
+      ],
+      "range": "Ontology",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "patternInstantiationCollection__patterns",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/patterns",
+      "multivalued": true,
+      "alias": "patterns",
+      "owner": "PatternInstantiationCollection",
+      "domain_of": [
+        "PatternInstantiationCollection"
+      ],
+      "range": "Pattern",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ontology__classes",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/classes",
+      "multivalued": true,
+      "alias": "classes",
+      "owner": "Ontology",
+      "domain_of": [
+        "Ontology"
+      ],
+      "range": "Class",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ontology__source",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/source",
+      "alias": "source",
+      "owner": "Ontology",
+      "domain_of": [
+        "Ontology"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "crossProduct__axes_of_classification",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/axes_of_classification",
+      "multivalued": true,
+      "alias": "axes_of_classification",
+      "owner": "CrossProduct",
+      "domain_of": [
+        "CrossProduct"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "delta__source_subgraph",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/source_subgraph",
+      "alias": "source_subgraph",
+      "owner": "Delta",
+      "domain_of": [
+        "Delta"
+      ],
+      "range": "SubGraph",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "delta__target_subgraph",
+      "from_schema": "https://w3id.org/hoopla",
+      "slot_uri": "https://w3id.org/hoopla/target_subgraph",
+      "alias": "target_subgraph",
+      "owner": "Delta",
+      "domain_of": [
+        "Delta"
+      ],
+      "range": "SubGraph",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SubClassTriad_child1_to_parent_relationship_type",
+      "definition_uri": "https://w3id.org/hoopla/child1_to_parent_relationship_type",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "child1_to_parent_relationship_type",
+      "domain": "SubClassTriad",
+      "slot_uri": "https://w3id.org/hoopla/child1_to_parent_relationship_type",
+      "alias": "child1_to_parent_relationship_type",
+      "owner": "SubClassTriad",
+      "domain_of": [
+        "SubClassTriad"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "child1_to_parent_relationship_type",
+      "range": "string",
+      "equals_string": "owl:SubClassOf",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "SubClassTriad_child2_to_parent_relationship_type",
+      "definition_uri": "https://w3id.org/hoopla/child2_to_parent_relationship_type",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "child2_to_parent_relationship_type",
+      "domain": "SubClassTriad",
+      "slot_uri": "https://w3id.org/hoopla/child2_to_parent_relationship_type",
+      "alias": "child2_to_parent_relationship_type",
+      "owner": "SubClassTriad",
+      "domain_of": [
+        "SubClassTriad"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "child2_to_parent_relationship_type",
+      "range": "string",
+      "equals_string": "owl:SubClassOf",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ComplementSubClassTriad_variant_of",
+      "definition_uri": "https://w3id.org/hoopla/variant_of",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "variant_of",
+      "domain": "ComplementSubClassTriad",
+      "slot_uri": "https://w3id.org/hoopla/variant_of",
+      "multivalued": true,
+      "alias": "variant_of",
+      "owner": "ComplementSubClassTriad",
+      "domain_of": [
+        "ComplementSubClassTriad"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "variant_of",
+      "range": "JEPDSubClassTriad",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ImplicitJEPDSubClassTriad_should_be_replaced_by",
+      "definition_uri": "https://w3id.org/hoopla/should_be_replaced_by",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "should_be_replaced_by",
+      "domain": "ImplicitJEPDSubClassTriad",
+      "slot_uri": "https://w3id.org/hoopla/should_be_replaced_by",
+      "alias": "should_be_replaced_by",
+      "owner": "ImplicitJEPDSubClassTriad",
+      "domain_of": [
+        "ImplicitJEPDSubClassTriad"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "should_be_replaced_by",
+      "range": "JEPDSubClassTriad",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "PartWholeTriad_child1_to_parent_relationship_type",
+      "definition_uri": "https://w3id.org/hoopla/child1_to_parent_relationship_type",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "child1_to_parent_relationship_type",
+      "domain": "PartWholeTriad",
+      "slot_uri": "https://w3id.org/hoopla/child1_to_parent_relationship_type",
+      "alias": "child1_to_parent_relationship_type",
+      "owner": "PartWholeTriad",
+      "domain_of": [
+        "PartWholeTriad"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "child1_to_parent_relationship_type",
+      "range": "string",
+      "equals_string": "BFO:0000050",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "PartWholeTriad_child2_to_parent_relationship_type",
+      "definition_uri": "https://w3id.org/hoopla/child2_to_parent_relationship_type",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "child2_to_parent_relationship_type",
+      "domain": "PartWholeTriad",
+      "slot_uri": "https://w3id.org/hoopla/child2_to_parent_relationship_type",
+      "alias": "child2_to_parent_relationship_type",
+      "owner": "PartWholeTriad",
+      "domain_of": [
+        "PartWholeTriad"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "child2_to_parent_relationship_type",
+      "range": "string",
+      "equals_string": "BFO:0000050",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "PrototypeSubClassTriadAntipattern_child1_to_parent_relationship_type",
+      "definition_uri": "https://w3id.org/hoopla/child1_to_parent_relationship_type",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "child1_to_parent_relationship_type",
+      "domain": "PrototypeSubClassTriadAntipattern",
+      "slot_uri": "https://w3id.org/hoopla/child1_to_parent_relationship_type",
+      "alias": "child1_to_parent_relationship_type",
+      "owner": "PrototypeSubClassTriadAntipattern",
+      "domain_of": [
+        "PrototypeSubClassTriadAntipattern"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "child1_to_parent_relationship_type",
+      "range": "string",
+      "equals_string": "owl:subClassOf",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "PrototypeSubClassTriadAntipattern_child2_to_parent_relationship_type",
+      "definition_uri": "https://w3id.org/hoopla/child2_to_parent_relationship_type",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "child2_to_parent_relationship_type",
+      "domain": "PrototypeSubClassTriadAntipattern",
+      "slot_uri": "https://w3id.org/hoopla/child2_to_parent_relationship_type",
+      "alias": "child2_to_parent_relationship_type",
+      "owner": "PrototypeSubClassTriadAntipattern",
+      "domain_of": [
+        "PrototypeSubClassTriadAntipattern"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "child2_to_parent_relationship_type",
+      "range": "string",
+      "equals_string": "owl:subClassOf",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "PrototypeSubClassTriadAntipattern_should_be_replaced_by",
+      "definition_uri": "https://w3id.org/hoopla/should_be_replaced_by",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "should_be_replaced_by",
+      "domain": "PrototypeSubClassTriadAntipattern",
+      "slot_uri": "https://w3id.org/hoopla/should_be_replaced_by",
+      "alias": "should_be_replaced_by",
+      "owner": "PrototypeSubClassTriadAntipattern",
+      "domain_of": [
+        "PrototypeSubClassTriadAntipattern"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "should_be_replaced_by",
+      "range": "PrototypeTriad",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    }
+  ],
+  "classes": [
+    {
+      "name": "PatternInstantiationCollection",
+      "definition_uri": "https://w3id.org/hoopla/PatternInstantiationCollection",
+      "description": "A combination of an ontology plus any number of pattern instances",
+      "from_schema": "https://w3id.org/hoopla",
+      "slots": [
+        "patternInstantiationCollection__title",
+        "patternInstantiationCollection__description",
+        "patternInstantiationCollection__ontology",
+        "patternInstantiationCollection__patterns"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "title",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "description",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "ontology",
+          "range": "Ontology",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "patterns",
+          "multivalued": true,
+          "range": "Pattern",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/hoopla/PatternInstantiationCollection",
+      "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Entity",
+      "definition_uri": "https://w3id.org/hoopla/Entity",
+      "description": "Entities can be patterns or individual elements",
+      "from_schema": "https://w3id.org/hoopla",
+      "abstract": true,
+      "slots": [
+        "id",
+        "label"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/Entity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Ontology",
+      "definition_uri": "https://w3id.org/hoopla/Ontology",
+      "from_schema": "https://w3id.org/hoopla",
+      "exact_mappings": [
+        "owl:Ontology"
+      ],
+      "is_a": "Entity",
+      "slots": [
+        "id",
+        "label",
+        "ontology__classes",
+        "ontology__source"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "classes",
+          "multivalued": true,
+          "range": "Class",
+          "inlined": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "source",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/hoopla/Ontology",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Class",
+      "definition_uri": "https://w3id.org/hoopla/Class",
+      "from_schema": "https://w3id.org/hoopla",
+      "mappings": [
+        "owl:Class"
+      ],
+      "is_a": "Entity",
+      "slots": [
+        "id",
+        "label",
+        "members",
+        "size"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://example.org/UNKNOWN/owl/Class",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AntiPattern",
+      "definition_uri": "https://w3id.org/hoopla/AntiPattern",
+      "description": "A mixin for patterns that should be avoided",
+      "from_schema": "https://w3id.org/hoopla",
+      "mixin": true,
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/AntiPattern",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SometimesAntiPattern",
+      "definition_uri": "https://w3id.org/hoopla/SometimesAntiPattern",
+      "description": "A mixin for patterns that are sometimes considered anti-patterns",
+      "from_schema": "https://w3id.org/hoopla",
+      "mixin": true,
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/SometimesAntiPattern",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Grouping",
+      "definition_uri": "https://w3id.org/hoopla/Grouping",
+      "from_schema": "https://w3id.org/hoopla",
+      "mixin": true,
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/Grouping",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Pattern",
+      "definition_uri": "https://w3id.org/hoopla/Pattern",
+      "description": "Abstract base class for all patterns. A pattern class defines a set of entities (which may be classes or individuals or other entities), together with relationships that hold between them.",
+      "from_schema": "https://w3id.org/hoopla",
+      "abstract": true,
+      "slots": [
+        "type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/Pattern",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SubGraph",
+      "definition_uri": "https://w3id.org/hoopla/SubGraph",
+      "description": "A pattern that corresponds to a static collection of entities in\na single graph or ontology.",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "Pattern",
+      "abstract": true,
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/SubGraph",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Pair",
+      "definition_uri": "https://w3id.org/hoopla/Pair",
+      "description": "An abstract SubGraph in which the focus is a pair of nodes",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "abstract": true,
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/Pair",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Triad",
+      "definition_uri": "https://w3id.org/hoopla/Triad",
+      "description": "An abstract SubGraph in which the focus is a trio of nodes",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "abstract": true,
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/Triad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Quad",
+      "definition_uri": "https://w3id.org/hoopla/Quad",
+      "description": "An abstract SubGraph in which the focus is a quad of nodes",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "abstract": true,
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/Quad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "GroupingPair",
+      "definition_uri": "https://w3id.org/hoopla/GroupingPair",
+      "description": "A SubGraph in which the focus is a pair of nodes where one (child) is a part of a group formed by the other (parent)",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "Pair",
+      "abstract": true,
+      "mixins": [
+        "Grouping"
+      ],
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "parent",
+        "child",
+        "child_to_parent_relationship_type",
+        "additional_axioms"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/GroupingPair",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "GroupingTriad",
+      "definition_uri": "https://w3id.org/hoopla/GroupingTriad",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "Triad",
+      "abstract": true,
+      "mixins": [
+        "Grouping"
+      ],
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "parent",
+        "child1",
+        "child2",
+        "child1_to_parent_relationship_type",
+        "child2_to_parent_relationship_type",
+        "additional_axioms"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/GroupingTriad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SubClassTriad",
+      "definition_uri": "https://w3id.org/hoopla/SubClassTriad",
+      "description": "A SubGraph in which the focus is a trio of nodes",
+      "examples": [
+        {
+          "description": "A Occupation parent that groups two subclasses Teacher and Welder",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "GroupingTriad",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "parent",
+        "child1",
+        "child2",
+        "additional_axioms",
+        "SubClassTriad_child1_to_parent_relationship_type",
+        "SubClassTriad_child2_to_parent_relationship_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/SubClassTriad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ImbalancedSubClassTriad",
+      "definition_uri": "https://w3id.org/hoopla/ImbalancedSubClassTriad",
+      "description": "A SubClassTriad in which the size of the two subclasses are imbalanced",
+      "title": "Imbalanced SubClass Triad",
+      "comments": [
+        "Can sometimes be an antipattern"
+      ],
+      "examples": [
+        {
+          "description": "A PedalledVehicle parent and subclasses Bicycle and Unicycle",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubClassTriad",
+      "mixins": [
+        "SometimesAntiPattern"
+      ],
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "parent",
+        "child1",
+        "child2",
+        "additional_axioms",
+        "SubClassTriad_child1_to_parent_relationship_type",
+        "SubClassTriad_child2_to_parent_relationship_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/ImbalancedSubClassTriad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MixedAxisSubClassTriad",
+      "definition_uri": "https://w3id.org/hoopla/MixedAxisSubClassTriad",
+      "description": "A SubClassTriad in which the two subclasses are classified on different axes",
+      "title": "Mixed Axis SubClass Triad",
+      "comments": [
+        "Although not an antipattern this can confuse users",
+        "This is an antipattern when subclass assertions are asserted"
+      ],
+      "examples": [
+        {
+          "description": "A class Car with two subclasses BlueCar and Volkswagen",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubClassTriad",
+      "mixins": [
+        "SometimesAntiPattern"
+      ],
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "parent",
+        "child1",
+        "child2",
+        "additional_axioms",
+        "SubClassTriad_child1_to_parent_relationship_type",
+        "SubClassTriad_child2_to_parent_relationship_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/MixedAxisSubClassTriad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DisjointSubClassTriad",
+      "definition_uri": "https://w3id.org/hoopla/DisjointSubClassTriad",
+      "annotations": [
+        {
+          "tag": "owl.template",
+          "value": "DisjointClasses( {{child1}} {{child2}} )",
+          "@type": "Annotation"
+        }
+      ],
+      "title": "Disjoint SubClass Triad",
+      "examples": [
+        {
+          "description": "a class Vehicle with subclasses Bicycle and MotorCar",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubClassTriad",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "parent",
+        "child1",
+        "child2",
+        "additional_axioms",
+        "SubClassTriad_child1_to_parent_relationship_type",
+        "SubClassTriad_child2_to_parent_relationship_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/DisjointSubClassTriad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "JEPDSubClassTriad",
+      "definition_uri": "https://w3id.org/hoopla/JEPDSubClassTriad",
+      "annotations": [
+        {
+          "tag": "owl.template",
+          "value": "DisjointUnion( {{parent}} {{child1}} {{child2}} )",
+          "@type": "Annotation"
+        }
+      ],
+      "title": "Jointly Exhaustive Pairwise Disjoint SubClass Triad",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubClassTriad",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "parent",
+        "child1",
+        "child2",
+        "additional_axioms",
+        "SubClassTriad_child1_to_parent_relationship_type",
+        "SubClassTriad_child2_to_parent_relationship_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/JEPDSubClassTriad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ComplementSubClassTriad",
+      "definition_uri": "https://w3id.org/hoopla/ComplementSubClassTriad",
+      "annotations": [
+        {
+          "tag": "owl.template",
+          "value": "EquivalentClasses( {{child1}} ObjectIntersectionOf( {{parent}} ObjectComplementOf( {{child2}} )))",
+          "@type": "Annotation"
+        }
+      ],
+      "title": "Complement SubClass Triad",
+      "examples": [
+        {
+          "description": "a parent Animal and child1 Vertebrate and child2 InvertebrateAnimal",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubClassTriad",
+      "mixins": [
+        "SometimesAntiPattern"
+      ],
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "should_be_replaced_by",
+        "parent",
+        "child1",
+        "child2",
+        "additional_axioms",
+        "SubClassTriad_child1_to_parent_relationship_type",
+        "SubClassTriad_child2_to_parent_relationship_type",
+        "ComplementSubClassTriad_variant_of"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/ComplementSubClassTriad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ImplicitJEPDSubClassTriad",
+      "definition_uri": "https://w3id.org/hoopla/ImplicitJEPDSubClassTriad",
+      "annotations": [
+        {
+          "tag": "missing_axioms",
+          "value": "DisjointUnion( {{parent}} {{child1}} {{child2}} )",
+          "@type": "Annotation"
+        }
+      ],
+      "description": "A SubClassOfTriad where there is implicit undeclared axioms that would make this a JEPDSubClassTriad",
+      "title": "Implicit Jointly Exhaustive Pairwise Disjoint SubClass Triad",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubClassTriad",
+      "mixins": [
+        "AntiPattern"
+      ],
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "parent",
+        "child1",
+        "child2",
+        "additional_axioms",
+        "SubClassTriad_child1_to_parent_relationship_type",
+        "SubClassTriad_child2_to_parent_relationship_type",
+        "ImplicitJEPDSubClassTriad_should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/ImplicitJEPDSubClassTriad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PartWholeTriad",
+      "definition_uri": "https://w3id.org/hoopla/PartWholeTriad",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "GroupingTriad",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "parent",
+        "child1",
+        "child2",
+        "additional_axioms",
+        "PartWholeTriad_child1_to_parent_relationship_type",
+        "PartWholeTriad_child2_to_parent_relationship_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/PartWholeTriad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PrototypeTriad",
+      "definition_uri": "https://w3id.org/hoopla/PrototypeTriad",
+      "description": "A GroupingTriad where the parent is a prototypical form",
+      "examples": [
+        {
+          "description": "a parent class Milk and child classes PlantBasedMilk and AnimalMilk",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "GroupingTriad",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "parent",
+        "child1",
+        "child2",
+        "child1_to_parent_relationship_type",
+        "child2_to_parent_relationship_type",
+        "additional_axioms"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/PrototypeTriad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PrototypeSubClassTriadAntipattern",
+      "definition_uri": "https://w3id.org/hoopla/PrototypeSubClassTriadAntipattern",
+      "description": "A variant of PrototypeTriad where the relationship type is subclass",
+      "examples": [
+        {
+          "description": "a parent class Milk and subclasses PlantBasedMilk and CowMilk",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "GroupingTriad",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "parent",
+        "child1",
+        "child2",
+        "additional_axioms",
+        "PrototypeSubClassTriadAntipattern_child1_to_parent_relationship_type",
+        "PrototypeSubClassTriadAntipattern_child2_to_parent_relationship_type",
+        "PrototypeSubClassTriadAntipattern_should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/PrototypeSubClassTriadAntipattern",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "EvolvedFromTriad",
+      "definition_uri": "https://w3id.org/hoopla/EvolvedFromTriad",
+      "examples": [
+        {
+          "description": "a parent class ancestral SHH gene and child classes Human SHH gene and Mouse SHH gene",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "GroupingTriad",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "parent",
+        "child1",
+        "child2",
+        "child1_to_parent_relationship_type",
+        "child2_to_parent_relationship_type",
+        "additional_axioms"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/EvolvedFromTriad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "CrossProduct",
+      "definition_uri": "https://w3id.org/hoopla/CrossProduct",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "abstract": true,
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "crossProduct__axes_of_classification"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "axes_of_classification",
+          "multivalued": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/hoopla/CrossProduct",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DenselyPopulatedCrossProduct",
+      "definition_uri": "https://w3id.org/hoopla/DenselyPopulatedCrossProduct",
+      "examples": [
+        {
+          "description": "all combinations of {measurement} x {anatomical entity}",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "CrossProduct",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "crossProduct__axes_of_classification"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/DenselyPopulatedCrossProduct",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SparselyPopulatedCrossProduct",
+      "definition_uri": "https://w3id.org/hoopla/SparselyPopulatedCrossProduct",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "CrossProduct",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "crossProduct__axes_of_classification"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/SparselyPopulatedCrossProduct",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "RaggedCrossProduct",
+      "definition_uri": "https://w3id.org/hoopla/RaggedCrossProduct",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SparselyPopulatedCrossProduct",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "crossProduct__axes_of_classification"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/RaggedCrossProduct",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "NAryRelationship",
+      "definition_uri": "https://w3id.org/hoopla/NAryRelationship",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/NAryRelationship",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MeasurementPattern",
+      "definition_uri": "https://w3id.org/hoopla/MeasurementPattern",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/MeasurementPattern",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantityPattern",
+      "definition_uri": "https://w3id.org/hoopla/QuantityPattern",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/QuantityPattern",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ReflexiveInPropertyChain",
+      "definition_uri": "https://w3id.org/hoopla/ReflexiveInPropertyChain",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/ReflexiveInPropertyChain",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AllValuesFromTransitiveAntiPattern",
+      "definition_uri": "https://w3id.org/hoopla/AllValuesFromTransitiveAntiPattern",
+      "title": "AllValuesFrom Transitive AntiPattern",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/AllValuesFromTransitiveAntiPattern",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AllValuesFromCardinalityAntiPattern",
+      "definition_uri": "https://w3id.org/hoopla/AllValuesFromCardinalityAntiPattern",
+      "title": "AllValuesFrom Transitive AntiPattern",
+      "from_schema": "https://w3id.org/hoopla",
+      "see_also": [
+        "https://douroucouli.wordpress.com/2021/03/24/avoid-mixing-parthood-with-cardinality-constraints/"
+      ],
+      "is_a": "SubGraph",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/AllValuesFromCardinalityAntiPattern",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ContextualRange",
+      "definition_uri": "https://w3id.org/hoopla/ContextualRange",
+      "examples": [
+        {
+          "description": "If MaterialEntity is part of anything, that thing must be a MaterialEntity",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "abstract": true,
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "domain_class",
+        "relationship_type",
+        "range_class"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/ContextualRange",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ContextualRangeUsingUniversalAxiom",
+      "definition_uri": "https://w3id.org/hoopla/ContextualRangeUsingUniversalAxiom",
+      "annotations": [
+        {
+          "tag": "owl.template",
+          "value": "SubClassOf( {{domain_class}} ObjectOnlyValuesFrom( {{relationship_type}} {{ range_class }} ))",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "ContextualRange",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "domain_class",
+        "relationship_type",
+        "range_class"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/ContextualRangeUsingUniversalAxiom",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ContextualRangeUsingDisjointnessAxiom",
+      "definition_uri": "https://w3id.org/hoopla/ContextualRangeUsingDisjointnessAxiom",
+      "annotations": [
+        {
+          "tag": "owl.template",
+          "value": "DisjointClasses( {{domain_class}} ObjectSomeValuesFrom( {{relationship_type}} {{ range_class }} ))",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "ContextualRange",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by",
+        "domain_class",
+        "relationship_type",
+        "range_class"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/ContextualRangeUsingDisjointnessAxiom",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SimpleGenusDifferentiaDefinition",
+      "definition_uri": "https://w3id.org/hoopla/SimpleGenusDifferentiaDefinition",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/SimpleGenusDifferentiaDefinition",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ContextualRefinementQuad",
+      "definition_uri": "https://w3id.org/hoopla/ContextualRefinementQuad",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "Quad",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/ContextualRefinementQuad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "InstanceContextualRefinementQuad",
+      "definition_uri": "https://w3id.org/hoopla/InstanceContextualRefinementQuad",
+      "examples": [
+        {
+          "description": "(some specific instance of) Lmn-2 interacts with (some specific instance of) Elf-2",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/hoopla",
+      "see_also": [
+        "https://douroucouli.wordpress.com/2019/03/14/biological-knowledge-graph-modeling-design-patterns/",
+        "https://philarchive.org/rec/JANLIW"
+      ],
+      "is_a": "ContextualRefinementQuad",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/InstanceContextualRefinementQuad",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "UpperOntologyConflation",
+      "definition_uri": "https://w3id.org/hoopla/UpperOntologyConflation",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "SubGraph",
+      "slots": [
+        "type",
+        "title",
+        "description",
+        "source",
+        "variant_of",
+        "should_be_replaced_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/UpperOntologyConflation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Delta",
+      "definition_uri": "https://w3id.org/hoopla/Delta",
+      "description": "A pattern that involves two subgraphs, a before state and an after state. Elements in subgraph1 may be related to elements in subgraph2",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "Pattern",
+      "slots": [
+        "type",
+        "delta__source_subgraph",
+        "delta__target_subgraph"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "source_subgraph",
+          "range": "SubGraph",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "target_subgraph",
+          "range": "SubGraph",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/hoopla/Delta",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Refactor",
+      "definition_uri": "https://w3id.org/hoopla/Refactor",
+      "description": "A delta where the source is intentionally transformed to the target in order\nto achieve some objective.",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "Delta",
+      "slots": [
+        "type",
+        "delta__source_subgraph",
+        "delta__target_subgraph"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/Refactor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ELShunt",
+      "definition_uri": "https://w3id.org/hoopla/ELShunt",
+      "description": "A refactor where non-EL axioms are migrated into a sub-module.",
+      "from_schema": "https://w3id.org/hoopla",
+      "is_a": "Refactor",
+      "slots": [
+        "type",
+        "delta__source_subgraph",
+        "delta__target_subgraph"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/hoopla/ELShunt",
+      "@type": "ClassDefinition"
+    }
+  ],
+  "metamodel_version": "1.7.0",
+  "source_file": "hoopla.yaml",
+  "source_file_date": "2024-01-13T17:51:12",
+  "source_file_size": 10879,
+  "generation_date": "2024-01-13T17:51:29",
+  "@type": "SchemaDefinition",
+  "@context": [
+    "project/jsonld/hoopla.context.jsonld",
+    "https://w3id.org/linkml/types.context.jsonld",
+    {
+      "@base": "https://w3id.org/hoopla/"
+    }
+  ]
+}

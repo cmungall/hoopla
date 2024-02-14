@@ -1,0 +1,6 @@
+name: hoopla
+author: Chris Mungall <cjmungall@lbl.gov>
+description: Higher Order Ontology Pattern LibrAry
+source_schema_path: src/hoopla/schema/hoopla.yaml
+google_sheet_id: 1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ
+google_sheet_tabs: personinfo enums

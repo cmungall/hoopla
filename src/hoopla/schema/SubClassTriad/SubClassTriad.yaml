@@ -1,0 +1,117 @@
+id: https://w3id.org/hoopla/SubClassTriad
+name: SubClassTriad
+title: SubClass Triad
+description: |-
+  structures following a SubClassOf triad pattern
+
+prefixes:
+  hoopla: https://w3id.org/hoopla/
+  linkml: https://w3id.org/linkml/
+default_prefix: hoopla
+
+imports:
+  - linkml:types
+  - ../core
+
+classes:
+
+  SubClassTriad:
+    title: SubClass Triad
+    description: |-
+      A SubGraph in which the focus is a trio of nodes
+    implements:
+      - hoopla:GroupingTriad
+    is_a: Pattern
+    slots:
+      - parent
+      - child1
+      - child2
+    annotations:
+      owl.template: |-
+        SubClassOf( {{tr(child1)}} {{tr(parent)}} )
+        SubClassOf( {{tr(child2)}} {{tr(parent)}} )
+    examples:
+      - description: A Occupation parent that groups two subclasses Teacher and Welder
+      - object:
+          title: Anatomical example of SubClassTriad
+          description: limb with two subtypes, fore and hind limb
+          source: uberon
+          parent:
+            id: UBERON:0002101
+            label: limb
+          child1:
+            id: UBERON:0002102
+            label: forelimb
+          child2:
+            id: UBERON:0002103
+            label: hindlimb
+        
+  ImbalancedSubClassTriad:
+    title: Imbalanced SubClass Triad
+    description: A SubClassTriad in which the size of the two subclasses are imbalanced
+    comments:
+      - Can sometimes be an anti-pattern
+    is_a: SubClassTriad
+    implements:
+      - hoopla:SometimesAntiPattern
+    examples:
+      - description: A PedalledVehicle parent and subclasses Bicycle and Unicycle
+
+  MixedAxisSubClassTriad:
+    title: Mixed Axis SubClass Triad
+    description: A SubClassTriad in which the two subclasses are classified on different axes
+    is_a: SubClassTriad
+    implements:
+      - hoopla:SometimesAntiPattern
+    comments:
+      - Although not an antipattern this can confuse users
+      - This is an antipattern when subclass assertions are asserted
+    examples:
+      - description: A class Car with two subclasses BlueCar and Volkswagen
+        
+  DisjointSubClassTriad:
+    title: Disjoint SubClass Triad
+    is_a: SubClassTriad
+    annotations:
+      owl.template: |-
+        SubClassOf( {{child1}} {{parent}} )
+        SubClassOf( {{child2}} {{parent}} )
+        DisjointClasses( {{child1}} {{child2}} )
+    examples:
+      - description: a class Vehicle with subclasses Bicycle and MotorCar
+        
+  JEPDSubClassTriad:
+    title: Jointly Exhaustive Pairwise Disjoint SubClass Triad
+    is_a: SubClassTriad
+    annotations:
+      owl.template: |-
+        DisjointUnion( {{parent}} {{child1}} {{child2}} )
+        
+  ComplementSubClassTriad:
+    title: Complement SubClass Triad
+    is_a: SubClassTriad
+    implements:
+      - hoopla:SometimesAntiPattern
+    slot_usage:
+      variant_of:
+        range: JEPDSubClassTriad
+    annotations:
+      owl.template: |-
+        EquivalentClasses( {{child1}} ObjectIntersectionOf( {{parent}} ObjectComplementOf( {{child2}} )))
+    examples:
+      - description: a parent Animal and child1 Vertebrate and child2 InvertebrateAnimal
+        
+  ImplicitJEPDSubClassTriad:
+    title: Implicit Jointly Exhaustive Pairwise Disjoint SubClass Triad
+    description: |-
+      A SubClassOfTriad where there is implicit undeclared axioms that would make this a JEPDSubClassTriad
+    is_a: SubClassTriad
+    implements:
+      - hoopla:AntiPattern
+    slot_usage:
+      should_be_replaced_by:
+        range: JEPDSubClassTriad
+    annotations:
+      missing_axioms: |-
+        DisjointUnion( {{parent}} {{child1}} {{child2}} )
+        

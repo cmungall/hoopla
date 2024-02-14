@@ -1,0 +1,497 @@
+type AllValuesFromCardinalityAntiPattern
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+type AllValuesFromTransitiveAntiPattern
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+interface AntiPattern
+  {
+  }
+
+type Class
+  {
+    id: String!
+    label: String
+    members: [Entity]
+    size: Integer
+  }
+
+type ComplementSubClassTriad implements SometimesAntiPattern
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    shouldBeReplacedBy: SubGraph
+    parent: String
+    child1: String
+    child2: String
+    additionalAxioms: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+    variantOf: [JEPDSubClassTriad]
+  }
+
+interface ContextualRange
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    domainClass: String
+    relationshipType: String
+    rangeClass: String
+  }
+
+type ContextualRangeUsingDisjointnessAxiom
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    domainClass: String
+    relationshipType: String
+    rangeClass: String
+  }
+
+type ContextualRangeUsingUniversalAxiom
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    domainClass: String
+    relationshipType: String
+    rangeClass: String
+  }
+
+type ContextualRefinementQuad
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+interface CrossProduct
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    axesOfClassification: [String]
+  }
+
+type Delta
+  {
+    type: String
+    sourceSubgraph: SubGraph
+    targetSubgraph: SubGraph
+  }
+
+type DenselyPopulatedCrossProduct
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    axesOfClassification: [String]
+  }
+
+type DisjointSubClassTriad
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    parent: String
+    child1: String
+    child2: String
+    additionalAxioms: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+  }
+
+type ELShunt
+  {
+    type: String
+    sourceSubgraph: SubGraph
+    targetSubgraph: SubGraph
+  }
+
+interface Entity
+  {
+    id: String!
+    label: String
+  }
+
+type EvolvedFromTriad
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    parent: String
+    child1: String
+    child2: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+    additionalAxioms: String
+  }
+
+interface Grouping
+  {
+  }
+
+type GroupingPair implements Grouping
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    parent: String
+    child: String
+    childToParentRelationshipType: String
+    additionalAxioms: String
+  }
+
+type GroupingTriad implements Grouping
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    parent: String
+    child1: String
+    child2: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+    additionalAxioms: String
+  }
+
+type ImbalancedSubClassTriad implements SometimesAntiPattern
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    parent: String
+    child1: String
+    child2: String
+    additionalAxioms: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+  }
+
+type ImplicitJEPDSubClassTriad implements AntiPattern
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    parent: String
+    child1: String
+    child2: String
+    additionalAxioms: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+    shouldBeReplacedBy: JEPDSubClassTriad
+  }
+
+type InstanceContextualRefinementQuad
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+type JEPDSubClassTriad
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    parent: String
+    child1: String
+    child2: String
+    additionalAxioms: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+  }
+
+type MeasurementPattern
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+type MixedAxisSubClassTriad implements SometimesAntiPattern
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    parent: String
+    child1: String
+    child2: String
+    additionalAxioms: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+  }
+
+type NAryRelationship
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+type Ontology
+  {
+    id: String!
+    label: String
+    classes: [Class]
+    source: String
+  }
+
+interface Pair
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+type PartWholeTriad
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    parent: String
+    child1: String
+    child2: String
+    additionalAxioms: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+  }
+
+interface Pattern
+  {
+    type: String
+  }
+
+type PatternInstantiationCollection
+  {
+    title: String
+    description: String
+    ontology: Ontology
+    patterns: [Pattern]
+  }
+
+type PrototypeSubClassTriadAntipattern
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    parent: String
+    child1: String
+    child2: String
+    additionalAxioms: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+    shouldBeReplacedBy: PrototypeTriad
+  }
+
+type PrototypeTriad
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    parent: String
+    child1: String
+    child2: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+    additionalAxioms: String
+  }
+
+interface Quad
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+type QuantityPattern
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+type RaggedCrossProduct
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    axesOfClassification: [String]
+  }
+
+type Refactor
+  {
+    type: String
+    sourceSubgraph: SubGraph
+    targetSubgraph: SubGraph
+  }
+
+type ReflexiveInPropertyChain
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+type SimpleGenusDifferentiaDefinition
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+interface SometimesAntiPattern
+  {
+  }
+
+type SparselyPopulatedCrossProduct
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    axesOfClassification: [String]
+  }
+
+type SubClassTriad
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+    parent: String
+    child1: String
+    child2: String
+    additionalAxioms: String
+    child1ToParentRelationshipType: String
+    child2ToParentRelationshipType: String
+  }
+
+interface SubGraph
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+interface Triad
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+
+type UpperOntologyConflation
+  {
+    type: String
+    title: String
+    description: String
+    source: String
+    variantOf: [SubGraph]
+    shouldBeReplacedBy: SubGraph
+  }
+

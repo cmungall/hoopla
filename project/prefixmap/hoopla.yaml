@@ -1,0 +1,15 @@
+{
+   "PATO": "http://purl.obolibrary.org/obo/PATO_",
+   "biolink": "https://w3id.org/biolink/",
+   "dcterms": "http://example.org/UNKNOWN/dcterms/",
+   "example": "https://example.org/",
+   "hoopla": "https://w3id.org/hoopla/",
+   "linkml": "https://w3id.org/linkml/",
+   "opla": "http://ontologydesignpatterns.org/opla/",
+   "owl": "http://example.org/UNKNOWN/owl/",
+   "rdfs": "http://example.org/UNKNOWN/rdfs/",
+   "schema": "http://schema.org/",
+   "Class": {
+      "@id": "owl:Class"
+   }
+}

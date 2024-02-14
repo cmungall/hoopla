@@ -1,0 +1,11 @@
+parent:
+  id: MONDO:0019377
+  label: Mycoplasma encephalitis
+child1:
+  id: MONDO:0019377/1
+  label: Mycoplasma encephalitis, caused by M pneumoniae
+  size: 1000000
+child2:
+  id: MONDO:0019377/2
+  label: Mycoplasma encephalitis, caused by M genitalium
+  size: 3  

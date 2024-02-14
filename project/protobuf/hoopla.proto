@@ -1,0 +1,359 @@
+message AllValuesFromCardinalityAntiPattern
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ }
+message AllValuesFromTransitiveAntiPattern
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ }
+message Class
+ {
+  string id = 0
+  string label = 0
+ repeated  entity members = 0
+  integer size = 0
+ }
+message ComplementSubClassTriad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+  subGraph shouldBeReplacedBy = 0
+  string parent = 0
+  string child1 = 0
+  string child2 = 0
+  string additionalAxioms = 0
+  string child1ToParentRelationshipType = 0
+  string child2ToParentRelationshipType = 0
+ repeated  jEPDSubClassTriad variantOf = 0
+ }
+message ContextualRangeUsingDisjointnessAxiom
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+  string domainClass = 0
+  string relationshipType = 0
+  string rangeClass = 0
+ }
+message ContextualRangeUsingUniversalAxiom
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+  string domainClass = 0
+  string relationshipType = 0
+  string rangeClass = 0
+ }
+message ContextualRefinementQuad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ }
+// A pattern that involves two subgraphs, a before state and an after state. Elements in subgraph1 may be related to elements in subgraph2
+message Delta
+ {
+  string type = 0
+  subGraph sourceSubgraph = 0
+  subGraph targetSubgraph = 0
+ }
+message DenselyPopulatedCrossProduct
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ repeated  string axesOfClassification = 0
+ }
+message DisjointSubClassTriad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+  string parent = 0
+  string child1 = 0
+  string child2 = 0
+  string additionalAxioms = 0
+  string child1ToParentRelationshipType = 0
+  string child2ToParentRelationshipType = 0
+ }
+// A refactor where non-EL axioms are migrated into a sub-module.
+message ELShunt
+ {
+  string type = 0
+  subGraph sourceSubgraph = 0
+  subGraph targetSubgraph = 0
+ }
+message EvolvedFromTriad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+  string parent = 0
+  string child1 = 0
+  string child2 = 0
+  string child1ToParentRelationshipType = 0
+  string child2ToParentRelationshipType = 0
+  string additionalAxioms = 0
+ }
+// A SubClassTriad in which the size of the two subclasses are imbalanced
+message ImbalancedSubClassTriad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+  string parent = 0
+  string child1 = 0
+  string child2 = 0
+  string additionalAxioms = 0
+  string child1ToParentRelationshipType = 0
+  string child2ToParentRelationshipType = 0
+ }
+// A SubClassOfTriad where there is implicit undeclared axioms that would make this a JEPDSubClassTriad
+message ImplicitJEPDSubClassTriad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  string parent = 0
+  string child1 = 0
+  string child2 = 0
+  string additionalAxioms = 0
+  string child1ToParentRelationshipType = 0
+  string child2ToParentRelationshipType = 0
+  jEPDSubClassTriad shouldBeReplacedBy = 0
+ }
+message InstanceContextualRefinementQuad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ }
+message JEPDSubClassTriad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+  string parent = 0
+  string child1 = 0
+  string child2 = 0
+  string additionalAxioms = 0
+  string child1ToParentRelationshipType = 0
+  string child2ToParentRelationshipType = 0
+ }
+message MeasurementPattern
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ }
+// A SubClassTriad in which the two subclasses are classified on different axes
+message MixedAxisSubClassTriad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+  string parent = 0
+  string child1 = 0
+  string child2 = 0
+  string additionalAxioms = 0
+  string child1ToParentRelationshipType = 0
+  string child2ToParentRelationshipType = 0
+ }
+message NAryRelationship
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ }
+message Ontology
+ {
+  string id = 0
+  string label = 0
+ repeated  class classes = 0
+  string source = 0
+ }
+message PartWholeTriad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+  string parent = 0
+  string child1 = 0
+  string child2 = 0
+  string additionalAxioms = 0
+  string child1ToParentRelationshipType = 0
+  string child2ToParentRelationshipType = 0
+ }
+// A combination of an ontology plus any number of pattern instances
+message PatternInstantiationCollection
+ {
+  string title = 0
+  string description = 0
+  ontology ontology = 0
+ repeated  pattern patterns = 0
+ }
+// A variant of PrototypeTriad where the relationship type is subclass
+message PrototypeSubClassTriadAntipattern
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  string parent = 0
+  string child1 = 0
+  string child2 = 0
+  string additionalAxioms = 0
+  string child1ToParentRelationshipType = 0
+  string child2ToParentRelationshipType = 0
+  prototypeTriad shouldBeReplacedBy = 0
+ }
+// A GroupingTriad where the parent is a prototypical form
+message PrototypeTriad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+  string parent = 0
+  string child1 = 0
+  string child2 = 0
+  string child1ToParentRelationshipType = 0
+  string child2ToParentRelationshipType = 0
+  string additionalAxioms = 0
+ }
+message QuantityPattern
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ }
+message RaggedCrossProduct
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ repeated  string axesOfClassification = 0
+ }
+// A delta where the source is intentionally transformed to the target in order
+// to achieve some objective.
+message Refactor
+ {
+  string type = 0
+  subGraph sourceSubgraph = 0
+  subGraph targetSubgraph = 0
+ }
+message ReflexiveInPropertyChain
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ }
+message SimpleGenusDifferentiaDefinition
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ }
+message SparselyPopulatedCrossProduct
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ repeated  string axesOfClassification = 0
+ }
+// A SubGraph in which the focus is a trio of nodes
+message SubClassTriad
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+  string parent = 0
+  string child1 = 0
+  string child2 = 0
+  string additionalAxioms = 0
+  string child1ToParentRelationshipType = 0
+  string child2ToParentRelationshipType = 0
+ }
+message UpperOntologyConflation
+ {
+  string type = 0
+  string title = 0
+  string description = 0
+  string source = 0
+ repeated  subGraph variantOf = 0
+  subGraph shouldBeReplacedBy = 0
+ }

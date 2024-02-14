@@ -1,0 +1,48 @@
+id: https://w3id.org/hoopla/StructureEntityPart
+name: StructureEntityPart
+title: SubClass Triad
+description: |-
+  structures following a SubClassOf triad pattern
+
+prefixes:
+  hoopla: https://w3id.org/hoopla/
+  linkml: https://w3id.org/linkml/
+default_prefix: hoopla
+
+imports:
+  - linkml:types
+  - ../core
+
+slots:
+  part_relation:
+
+classes:
+
+  StructureEntityPart:
+    title: Structure Entity Part
+    description: |-
+      A special data structure for encoding part-whole relations that
+      is fully embedded in the formal framework of standard description logics.
+    see_also:
+      - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2232338/
+    implements:
+      - hoopla:GroupingTriad
+    is_a: Pattern
+    slots:
+      - parent
+      - child1
+      - child2
+      - part_relation
+    slot_usage:
+      parent:
+        role: Structure
+      child1:
+        role: Entity
+      child1:
+        role: Part
+    annotations:
+      owl.template: |-
+        SubClassOf( {{child1}} {{parent}} )
+        SubClassOf( {{child2}} {{parent}} )
+        EquivalentClasses( {{parent}} ObjectUnionOf ( {{child1}} {{child2}} ) )
+        EquivalentClasses( {{child2}} ObjectSomeValuesFrom ( {{part_relation}} {{child1}} ) )

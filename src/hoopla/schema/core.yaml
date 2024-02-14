@@ -1,0 +1,148 @@
+id: https://w3id.org/hoopla/core
+name: hoopla-core
+title: Hoopla Core Definitions
+description: |-
+  Core definitions for Hoopla
+
+prefixes:
+  hoopla: https://w3id.org/hoopla/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/
+  schema: http://schema.org/
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  example: https://example.org/
+  opla: http://ontologydesignpatterns.org/opla/
+default_prefix: hoopla
+default_range: string
+
+imports:
+  - linkml:types
+
+slots:
+
+  id:
+    identifier: true
+
+  label:
+    slot_uri: rdfs:label
+    description: Human-readable name for a thing
+
+  title:
+    slot_uri: dcterms:title
+
+  source:
+    slot_uri: dcterms:source
+
+  description:
+    slot_uri: dcterms:description
+    description: Human-readable description of a thing
+
+  variant_of:
+    range: SubGraph
+    multivalued: true
+  should_be_replaced_by:
+    range: SubGraph
+
+  related_to:
+    abstract: true
+    inlined: true
+    range: Entity
+
+  relationship_type:
+    is_a: related_to
+  parent:
+    is_a: related_to
+  child:
+    is_a: related_to
+  child1:
+    is_a: child
+  child2:
+    is_a: child
+  axiom:
+  relationship:
+    is_a: axiom
+  child_to_parent_relationship:
+    is_a: relationship
+  child_to_parent_relationship_type:
+    is_a: relationship_type
+  child1_to_parent_relationship_type:
+    is_a: child_to_parent_relationship_type
+  child2_to_parent_relationship_type:
+    is_a: child_to_parent_relationship_type
+  additional_axioms:
+  domain_class:
+  range_class:
+
+  members:
+    range: Entity
+    multivalued: true
+  size:
+    range: integer
+    
+classes:
+
+  Pattern:
+    abstract: true
+    description: >-
+      Abstract base class for all patterns. A pattern class defines a set
+      of entities (which may be classes or individuals or other entities),
+      together with relationships that hold between them.
+    slots:
+      - title
+      - description
+      - source
+
+  PatternInstantiationCollection:
+    tree_root: true
+    description: >-
+      A combination of an ontology plus any number of pattern instances
+    attributes:
+      title:
+      description:
+      ontology:
+        range: Ontology
+        inlined: true
+      patterns:
+        range: Pattern
+        multivalued: true
+
+  Entity:
+    abstract: true
+    description: >-
+      Entities can be patterns or individual elements
+    slots:
+      - id
+      - label
+
+  Ontology:
+    is_a: Entity
+    attributes:
+      classes:
+        range: Class
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      source:
+    exact_mappings:
+      - owl:Ontology
+
+  Class:
+    is_a: Entity
+    class_uri: owl:Class
+    slots:
+      - members
+      - size
+
+  SubGraph:
+    abstract: true
+    is_a: Pattern
+    description: |-
+      A pattern that corresponds to a static collection of entities in
+      a single graph or ontology.
+    slots:
+      - title
+      - description
+      - source
+      - variant_of
+      - should_be_replaced_by
+      
